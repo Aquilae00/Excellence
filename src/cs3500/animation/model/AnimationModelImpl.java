@@ -82,6 +82,29 @@ public class AnimationModelImpl implements AnimationModel {
     return this.transforms;
   }
 
+  @Override
+  public ArrayList<Transformation> getTransformations(int tick) {
+    ArrayList<Transformation> al = new ArrayList<>();
+    for (Transformation t : this.transforms) {
+      if (t.getT1() == tick) {
+        al.add(new Transformation(t.getName(),t.getT1(),t.getPosition1().getX(),
+                t.getPosition1().getY(),t.getDimn1().getWidth(),t.getDimn1().getHeight(),
+                t.getColor1().getRed(),t.getColor1().getGreen(),t.getColor1().getBlue()));
+      }
+      else if (t.getT2() == tick) {
+        al.add(new Transformation(t.getName(),t.getT2(),t.getPosition2().getX(),
+                t.getPosition2().getY(),t.getDimn2().getWidth(),t.getDimn2().getHeight(),
+                t.getColor2().getRed(),t.getColor2().getGreen(),t.getColor2().getBlue()));
+      }
+    }
+    return al;
+  }
+
+  @Override
+  public void setTransormations(ArrayList<Transformation> transormations) {
+    this.transforms = transormations;
+  }
+
   /**
    * The builder that builds up the animation using methods provided by the AnimationBuilder
    * interface. Each method call can be followed by another method call, constructing a final

@@ -22,7 +22,7 @@ public class VisualView extends AView implements IView {
   public VisualView(AnimationModel model) {
     super();
     this.setTitle("Excellence");
-    this.setSize(500, 500);
+    this.setSize(model.getBoundingDimension().getWidth(), model.getBoundingDimension().getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //use a borderlayout with drawing panel in center and button panel in south
     this.setLayout(new BorderLayout());

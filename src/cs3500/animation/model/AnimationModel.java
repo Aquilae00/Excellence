@@ -49,4 +49,8 @@ public interface AnimationModel {
    */
 
   ArrayList<Transformation> getTransformations();
+
+  ArrayList<Transformation> getTransformations(int tick);
+
+  void setTransormations(ArrayList<Transformation> transormations);
 }
