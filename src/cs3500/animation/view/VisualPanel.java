@@ -80,4 +80,8 @@ public class VisualPanel extends JPanel implements ActionListener {
   public void stopTimer(){
     this.timer.stop();
   }
+
+  public void setTick(int s) {
+    this.tick = s;
+  }
 }

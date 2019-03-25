@@ -10,6 +10,8 @@ import cs3500.animation.model.ImmAnimationModel;
 public class EnhancedVisualView extends JFrame implements IView{
   private JButton startButton;
   private JButton stopButton;
+  private JButton resumeButton;
+  private JButton restartButton;
   private JPanel buttonPanel;
   private VisualPanel vPanel;
 
@@ -36,10 +38,22 @@ public class EnhancedVisualView extends JFrame implements IView{
     buttonPanel.add(startButton);
     startButton.addActionListener(new StartHandler(this));
 
+    // add resume button
+    resumeButton = new JButton("Resume");
+    buttonPanel.add(resumeButton);
+    resumeButton.addActionListener(new ResumeHandler(this));
+
+
     //add stop button
     stopButton = new JButton("Pause");
     buttonPanel.add(stopButton);
     stopButton.addActionListener(new PauseHandler(this));
+
+    //add restart button
+    restartButton = new JButton("Restart");
+    buttonPanel.add(restartButton);
+    restartButton.addActionListener(new RestartHandler(vPanel));
+
   }
 
   public VisualPanel getVPanel() {

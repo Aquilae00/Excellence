@@ -166,6 +166,9 @@ public class AnimationModelImpl implements AnimationModel {
       this.transforms.add(new Transformation(name, t, x, y, w, h, r, g, b));
       return this;
     }
+
+
+
   }
 }
 
