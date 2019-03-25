@@ -48,7 +48,7 @@ public class SVGViewTest {
             "attributeName=\"width\" from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"height\" from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"fill\" from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n"
             +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" attributeName=\"x\" " +
@@ -59,7 +59,7 @@ public class SVGViewTest {
             " from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" attributeName=\"height\" " +
             "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" attributeName=\"fill\" "
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" attributeName=\"fill\" "
             +
             "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
             "</rect>\n" +
@@ -146,7 +146,7 @@ public class SVGViewTest {
             "attributeName=\"width\" from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\"" +
             " attributeName=\"height\" from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\"" +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\"" +
             " attributeName=\"fill\" from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" " +
             "/>\n"
             +
@@ -158,7 +158,7 @@ public class SVGViewTest {
             " attributeName=\"width\" from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"height\" from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"fill\" from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n"
             +
             "</rect>\n" +
@@ -172,7 +172,7 @@ public class SVGViewTest {
             "attributeName=\"rx\" from=\"10\" to=\"10\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\"" +
             " attributeName=\"ry\" from=\"20\" to=\"20\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"fill\" from=\"rgb(0,255,0)\" to=\"rgb(0,255,0)\" fill=\"freeze\" " +
             "/>\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
@@ -183,7 +183,7 @@ public class SVGViewTest {
             "attributeName=\"rx\" from=\"10\" to=\"40\" fill=\"freeze\" />\n" +
             "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"ry\" from=\"20\" to=\"20\" fill=\"freeze\" />\n" +
-            "<animateColor attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
+            "<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" " +
             "attributeName=\"fill\" from=\"rgb(255,0,0)\" to=\"rgb(0,255,0)\" fill=\"freeze\" />\n"
             +
             "</ellipse>\n" +

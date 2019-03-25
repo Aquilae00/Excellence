@@ -132,7 +132,7 @@ public class SVGView extends AView {
                     .append(t2.getDimn2().getHeight()).append("\" ")
                     .append("fill=\"freeze\" />\n");
             //Write XML for Color change
-            stringBuilder.append("<animateColor attributeType=\"xml\" ").append("begin=\"")
+            stringBuilder.append("<animate attributeType=\"xml\" ").append("begin=\"")
                     .append((t2.getT1() / tickScale) * 100).append("ms\" ")
                     .append("dur=\"").append(((t2.getT2() - t2.getT1()) / tickScale) * 100)
                     .append("ms\" ").append("attributeName=\"fill\" ").append("from=\"")
@@ -221,7 +221,7 @@ public class SVGView extends AView {
                     .append(t2.getDimn2().getHeight()).append("\" ")
                     .append("fill=\"freeze\" />\n");
             //Write XML for Color change
-            stringBuilder.append("<animateColor attributeType=\"xml\" ").append("begin=\"")
+            stringBuilder.append("<animate attributeType=\"xml\" ").append("begin=\"")
                     .append((t2.getT1() / tickScale) * 100).append("ms\" ")
                     .append("dur=\"").append(((t2.getT2() - t2.getT1()) / tickScale) * 100)
                     .append("ms\" ").append("attributeName=\"fill\" ").append("from=\"")

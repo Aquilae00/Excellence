@@ -7,6 +7,7 @@ import cs3500.animation.controller.Controller;
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.animator.util.AnimationReader;
 import cs3500.animation.model.AnimationModelImpl.Builder;
+import cs3500.animation.view.EnhancedVisualView;
 import cs3500.animation.view.IView;
 import cs3500.animation.view.SVGView;
 import cs3500.animation.view.TextualView;
@@ -68,7 +69,11 @@ public final class Excellence {
         controller = new Controller(view);
         break;
       case "visual":
-        view = new VisualView(model);
+        view = new VisualView(model,speed);
+        controller = new Controller(view);
+        break;
+      case "edit":
+        view = new EnhancedVisualView(model,speed);
         controller = new Controller(view);
         break;
       default:

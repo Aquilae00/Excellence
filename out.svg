@@ -4,11 +4,11 @@
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="y" from="200" to="200" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="width" from="50" to="50" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="height" from="100" to="100" fill="freeze" />
-<animateColor attributeType="xml" begin="0ms" dur="0ms" attributeName="fill" from="rgb(255,0,0)" to="rgb(255,0,0)" fill="freeze" />
+<animate attributeType="xml" begin="0ms" dur="0ms" attributeName="fill" from="rgb(255,0,0)" to="rgb(255,0,0)" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="x" from="200" to="200" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="y" from="200" to="200" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="width" from="50" to="50" fill="freeze" />
 <animate attributeType="xml" begin="0ms" dur="0ms" attributeName="height" from="100" to="100" fill="freeze" />
-<animateColor attributeType="xml" begin="0ms" dur="0ms" attributeName="fill" from="rgb(255,0,0)" to="rgb(255,0,0)" fill="freeze" />
+<animate attributeType="xml" begin="0ms" dur="0ms" attributeName="fill" from="rgb(255,0,0)" to="rgb(255,0,0)" fill="freeze" />
 </rect>
 </svg>
