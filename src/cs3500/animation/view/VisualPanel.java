@@ -87,12 +87,7 @@ public class VisualPanel extends JPanel implements ActionListener {
 
   }
 
-  public boolean isTimerRunning() {
-    return this.timer.isRunning();
-  }
-
   public int getTick() {
     return this.tick;
   }
-
 }

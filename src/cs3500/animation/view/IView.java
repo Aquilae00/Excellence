@@ -14,11 +14,10 @@ public interface IView {
    */
   void makeVisible();
 
-  /**
-   * It gets the animation model of the view.
-   *
-   * @return the animation model of the view
+  /*
+  TODO:
+  1.DO I need this interface right here ?
+  2.Shaking image
+  3. the use of read only model
    */
-  AnimationModel getViewModel();
-
 }

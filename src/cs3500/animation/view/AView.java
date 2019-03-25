@@ -8,7 +8,7 @@ import cs3500.animation.model.AnimationModel;
  * An abstract class of View, which provides necessary fields to the subclasses. Provide the
  * subclasses with methods structure.
  */
-public class AView extends JFrame implements IView {
+public abstract class AView extends JFrame implements IView {
   protected AnimationModel model;
   protected int tickScale;
 
@@ -17,8 +17,4 @@ public class AView extends JFrame implements IView {
     setVisible(false);
   }
 
-  @Override
-  public AnimationModel getViewModel() {
-    return this.model;
-  }
 }

@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ResumeHandler implements ActionListener {
-  private VisualPanel vp;
-  public ResumeHandler(VisualPanel vp){
-    this.vp = vp;
+  private EnhancedIView evv;
+  public ResumeHandler(EnhancedIView evv){
+    this.evv = evv;
   }
   @Override
   public void actionPerformed(ActionEvent e) {
-    vp.startTimer();
+    evv.startTimer();
   }
 
 }

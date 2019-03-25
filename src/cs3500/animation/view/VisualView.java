@@ -37,9 +37,4 @@ public class VisualView extends AView implements IView {
   public void makeVisible() {
     setVisible(true);
   }
-
-  @Override
-  public AnimationModel getViewModel() {
-    return null;
-  }
 }

@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 public class RestartHandler implements ActionListener {
 
-  private VisualPanel vp;
-  public RestartHandler(VisualPanel evv){
-    this.vp = evv;
+  private EnhancedIView evv;
+  public RestartHandler(EnhancedIView evv){
+    this.evv = evv;
   }
 
   public void actionPerformed(ActionEvent e) {
-    vp.restartTimer();
+    evv.restartTimer();
   }
 }
