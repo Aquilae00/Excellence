@@ -36,18 +36,18 @@ public class EnhancedVisualView extends JFrame implements IView{
     //add play button
     startButton = new JButton("Play");
     buttonPanel.add(startButton);
-    startButton.addActionListener(new StartHandler(this));
+    startButton.addActionListener(new StartHandler(vPanel));
 
     // add resume button
     resumeButton = new JButton("Resume");
     buttonPanel.add(resumeButton);
-    resumeButton.addActionListener(new ResumeHandler(this));
+    resumeButton.addActionListener(new ResumeHandler(vPanel));
 
 
     //add stop button
     stopButton = new JButton("Pause");
     buttonPanel.add(stopButton);
-    stopButton.addActionListener(new PauseHandler(this));
+    stopButton.addActionListener(new PauseHandler(vPanel));
 
     //add restart button
     restartButton = new JButton("Restart");

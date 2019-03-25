@@ -11,6 +11,6 @@ public class RestartHandler implements ActionListener {
   }
 
   public void actionPerformed(ActionEvent e) {
-    vp.setTick(0);
+    vp.restartTimer();
   }
 }

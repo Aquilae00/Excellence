@@ -4,12 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StartHandler implements ActionListener {
-  private EnhancedVisualView evv;
-  public StartHandler(EnhancedVisualView evv){
-    this.evv = evv;
+  private VisualPanel vp;
+  public StartHandler(VisualPanel vp){
+    this.vp = vp;
   }
   @Override
   public void actionPerformed(ActionEvent e) {
-    evv.getVPanel().startTimer();
+    if(vp.getTick() != 0) {
+
+    } else{
+      vp.startTimer();
+    }
   }
 }
