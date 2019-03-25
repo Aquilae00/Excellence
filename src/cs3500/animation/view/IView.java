@@ -16,8 +16,10 @@ public interface IView {
 
   /*
   TODO:
-  1.DO I need this interface right here ?
-  2.Shaking image
+  1. DO I need this interface right here ?
+  2. Shaking image
   3. the use of read only model
+  4. Having timer control from Interface of EVV
+  5. Invalid delay
    */
 }

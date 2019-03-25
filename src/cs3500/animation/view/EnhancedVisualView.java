@@ -6,15 +6,24 @@ import javax.swing.*;
 
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.ImmAnimationModel;
+import cs3500.animation.view.Handlers.DecreaseSpeedHandler;
+import cs3500.animation.view.Handlers.IncreaseSpeedHandler;
+import cs3500.animation.view.Handlers.PauseHandler;
+import cs3500.animation.view.Handlers.RestartHandler;
+import cs3500.animation.view.Handlers.ResumeHandler;
+import cs3500.animation.view.Handlers.StartHandler;
 
 public class EnhancedVisualView extends JFrame implements EnhancedIView {
   private JButton startButton;
   private JButton stopButton;
   private JButton resumeButton;
   private JButton restartButton;
+  private JButton increaseSpeedButton;
+  private JButton decreaseSpeedButton;
   private JPanel buttonPanel;
   private VisualPanel vPanel;
   private VisualView vView;
+  private int speedAcc;
 
   public EnhancedVisualView(AnimationModel model, int speed) {
     super();
@@ -55,6 +64,16 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     buttonPanel.add(restartButton);
     restartButton.addActionListener(new RestartHandler(this));
 
+    //add increase speed button
+    increaseSpeedButton = new JButton("+1 speed");
+    buttonPanel.add(increaseSpeedButton);
+    increaseSpeedButton.addActionListener(new IncreaseSpeedHandler(this));
+
+    //add decrease speed Button
+    decreaseSpeedButton = new JButton("-1 speed");
+    buttonPanel.add(decreaseSpeedButton);
+    decreaseSpeedButton.addActionListener(new DecreaseSpeedHandler(this));
+
   }
 
 
@@ -81,5 +100,15 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   @Override
   public VisualPanel getVisualPanel() {
     return this.vPanel;
+  }
+
+  @Override
+  public void increaseSpeed() {
+    vPanel.increaseSpeed();
+  }
+
+  @Override
+  public void decreaseSpeed() {
+    vPanel.decreaseSpeed();
   }
 }

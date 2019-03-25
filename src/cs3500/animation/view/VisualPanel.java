@@ -36,9 +36,9 @@ public class VisualPanel extends JPanel implements ActionListener {
     super();
     this.model = model;
     Tweening tween = new Tweening();
-    this.timer = new Timer(1000/speed, this);
-    this.tick = 0;
     this.speed = speed;
+    this.timer = new Timer(1000/this.speed , this);
+    this.tick = 0;
     transformations = tween.apply(model.getTransformations());
     this.setBackground(Color.WHITE);
   }
@@ -84,10 +84,18 @@ public class VisualPanel extends JPanel implements ActionListener {
   public void restartTimer() {
     tick = 0;
     this.timer.restart();
-
   }
-
   public int getTick() {
     return this.tick;
+  }
+
+  public void increaseSpeed() {
+    this.speed++;
+    timer.setDelay(1000/speed);
+  }
+
+  public void decreaseSpeed() {
+    this.speed--;
+    timer.setDelay(1000/speed);
   }
 }

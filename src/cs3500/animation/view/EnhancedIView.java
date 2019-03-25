@@ -8,4 +8,8 @@ public interface EnhancedIView extends IView {
   void restartTimer();
 
   VisualPanel getVisualPanel();
+
+  void increaseSpeed();
+
+  void decreaseSpeed();
 }
