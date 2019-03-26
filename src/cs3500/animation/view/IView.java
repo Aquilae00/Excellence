@@ -21,5 +21,6 @@ public interface IView {
   3. the use of read only model
   4. Having timer control from Interface of EVV
   5. Invalid delay
+  6. How to adapt the button to panel
    */
 }

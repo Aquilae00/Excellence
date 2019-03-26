@@ -12,4 +12,6 @@ public interface EnhancedIView extends IView {
   void increaseSpeed();
 
   void decreaseSpeed();
+
+  void toggleLoop();
 }

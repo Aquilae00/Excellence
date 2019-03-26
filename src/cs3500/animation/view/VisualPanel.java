@@ -24,6 +24,7 @@ public class VisualPanel extends JPanel implements ActionListener {
   private ImmAnimationModel model;
   private int tick;
   private int speed;
+  private boolean loop;
   private Timer timer;
   private ArrayList<Transformation> transformations;
 
@@ -39,6 +40,7 @@ public class VisualPanel extends JPanel implements ActionListener {
     this.speed = speed;
     this.timer = new Timer(1000/this.speed , this);
     this.tick = 0;
+    this.loop = true;
     transformations = tween.apply(model.getTransformations());
     this.setBackground(Color.WHITE);
   }
@@ -70,6 +72,12 @@ public class VisualPanel extends JPanel implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     tick++;
+
+    if(loop) {
+      if (tick > transformations.size()) {
+        tick = 0;
+      }
+    }
     repaint();
   }
 
@@ -97,5 +105,13 @@ public class VisualPanel extends JPanel implements ActionListener {
   public void decreaseSpeed() {
     this.speed--;
     timer.setDelay(1000/speed);
+  }
+
+  public void toggleLoop() {
+    if (this.loop) {
+      this.loop = false;
+    } else {
+      this.loop = true;
+    }
   }
 }

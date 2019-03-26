@@ -6,12 +6,7 @@ import javax.swing.*;
 
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.ImmAnimationModel;
-import cs3500.animation.view.Handlers.DecreaseSpeedHandler;
-import cs3500.animation.view.Handlers.IncreaseSpeedHandler;
-import cs3500.animation.view.Handlers.PauseHandler;
-import cs3500.animation.view.Handlers.RestartHandler;
-import cs3500.animation.view.Handlers.ResumeHandler;
-import cs3500.animation.view.Handlers.StartHandler;
+import cs3500.animation.view.Handlers.*;
 
 public class EnhancedVisualView extends JFrame implements EnhancedIView {
   private JButton startButton;
@@ -20,10 +15,10 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   private JButton restartButton;
   private JButton increaseSpeedButton;
   private JButton decreaseSpeedButton;
+  private JButton toggleLoopButton;
   private JPanel buttonPanel;
   private VisualPanel vPanel;
   private VisualView vView;
-  private int speedAcc;
 
   public EnhancedVisualView(AnimationModel model, int speed) {
     super();
@@ -74,6 +69,10 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     buttonPanel.add(decreaseSpeedButton);
     decreaseSpeedButton.addActionListener(new DecreaseSpeedHandler(this));
 
+    //add toggle loop button
+    toggleLoopButton = new JButton("Loop On/Off");
+    buttonPanel.add(toggleLoopButton);
+    toggleLoopButton.addActionListener(new LoopHandler(this));
   }
 
 
@@ -110,5 +109,10 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   @Override
   public void decreaseSpeed() {
     vPanel.decreaseSpeed();
+  }
+
+  @Override
+  public void toggleLoop() {
+    vPanel.toggleLoop();
   }
 }
