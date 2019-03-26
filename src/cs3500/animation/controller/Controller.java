@@ -1,11 +1,14 @@
 package cs3500.animation.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import cs3500.animation.view.IView;
 
 /**
  * The class that is used to run the model and view.
  */
-public class Controller implements IController{
+public class Controller implements IController {
   private IView view;
 
   /**
@@ -21,5 +24,4 @@ public class Controller implements IController{
   public void goAnimate() {
     this.view.makeVisible();
   }
-
 }

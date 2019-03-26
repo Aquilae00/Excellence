@@ -1,5 +1,7 @@
 package cs3500.animation.view;
 
+import cs3500.animation.view.Panels.VisualPanel;
+
 public interface EnhancedIView extends IView {
   void startTimer();
 

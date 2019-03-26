@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.swing.tree.TreeNode;
+
 import cs3500.animation.model.animator.util.AnimationBuilder;
 import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.model.position.Position2D;
@@ -84,27 +86,30 @@ public class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public ArrayList<Transformation> getTransformations(int tick) {
-    ArrayList<Transformation> al = new ArrayList<>();
-    for (Transformation t : this.transforms) {
-      if (t.getT1() == tick) {
-        al.add(new Transformation(t.getName(),t.getT1(),t.getPosition1().getX(),
-                t.getPosition1().getY(),t.getDimn1().getWidth(),t.getDimn1().getHeight(),
-                t.getColor1().getRed(),t.getColor1().getGreen(),t.getColor1().getBlue()));
-      }
-      else if (t.getT2() == tick) {
-        al.add(new Transformation(t.getName(),t.getT2(),t.getPosition2().getX(),
-                t.getPosition2().getY(),t.getDimn2().getWidth(),t.getDimn2().getHeight(),
-                t.getColor2().getRed(),t.getColor2().getGreen(),t.getColor2().getBlue()));
-      }
-    }
-    return al;
+  public void setTransformations(ArrayList<Transformation> transformations) {
+    this.transforms = transformations;
+  }
+
+  public void addShape(String name, String type) {
+    this.shapes.put(name,type);
   }
 
   @Override
-  public void setTransormations(ArrayList<Transformation> transormations) {
-    this.transforms = transormations;
+  public void deleteTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
+    Transformation temp = new Transformation(name,t1,x1,y1,w1,h1,r1,g1,b1);
+    if (!this.transforms.remove(temp)) {
+      throw new IllegalArgumentException("Keyframe Not Found");
+    }
   }
+
+  @Override
+  public void insertTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
+    Transformation temp = new Transformation(name,t1,x1,y1,w1,h1,r1,g1,b1);
+    if (!this.transforms.add(temp)) {
+      throw new IllegalArgumentException("Keyframe Not Found");
+    }
+  }
+
 
   /**
    * The builder that builds up the animation using methods provided by the AnimationBuilder

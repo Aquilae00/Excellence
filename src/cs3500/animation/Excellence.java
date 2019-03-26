@@ -4,8 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import cs3500.animation.controller.Controller;
+import cs3500.animation.controller.EnhancedController;
 import cs3500.animation.controller.IController;
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.animator.util.AnimationReader;
 import cs3500.animation.model.AnimationModelImpl.Builder;
 import cs3500.animation.view.EnhancedVisualView;
@@ -24,7 +26,7 @@ public final class Excellence {
    * @param args the arguments.
    */
   public static void main(String[] args) {
-    AnimationModel model;
+    IReadOnlyModel model;
     IView view;
     IController controller = null;
     Readable file = null;
@@ -74,8 +76,8 @@ public final class Excellence {
         controller = new Controller(view);
         break;
       case "edit":
-        view = new EnhancedVisualView(model,speed);
-        controller = new Controller(view);
+        EnhancedVisualView evv = new EnhancedVisualView(model,speed);
+        controller = new EnhancedController(evv);
         break;
       default:
         break;

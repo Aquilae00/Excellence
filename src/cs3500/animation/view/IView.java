@@ -1,6 +1,7 @@
 package cs3500.animation.view;
 
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.IReadOnlyModel;
 
 /**
  * This interface represents the operations offered by an IView. Provides the classes that
@@ -14,6 +15,7 @@ public interface IView {
    */
   void makeVisible();
 
+  IReadOnlyModel getModel();
   /*
   TODO:
   1. DO I need this interface right here ?

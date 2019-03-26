@@ -1,37 +1,39 @@
 package cs3500.animation.model;
 
+import com.sun.org.apache.bcel.internal.generic.IREM;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.model.position.Position2D;
 
-public final class ImmAnimationModel {
-  private Position2D leftTopMostPosn;
-  private Dimension2D boundingDimension;
-  private Map<String, String> shapes;
-  private ArrayList<Transformation> transformations;
+public final class ImmAnimationModel implements IReadOnlyModel {
+  private IReadOnlyModel am;
 
-  public ImmAnimationModel(AnimationModel model) {
-    this.leftTopMostPosn = model.getLeftTopMostPosn();
-    this.boundingDimension = model.getBoundingDimension();
-    this.shapes = model.getShapes();
-    this.transformations = model.getTransformations();
+  public ImmAnimationModel(IReadOnlyModel model) {
+    this.am = model;
   }
 
   public ArrayList<Transformation> getTransformations() {
-    return transformations;
+    return am.getTransformations();
   }
 
+
   public Dimension2D getBoundingDimension() {
-    return boundingDimension;
+    return am.getBoundingDimension();
   }
 
   public Map<String, String> getShapes() {
-    return shapes;
+    return am.getShapes();
+  }
+
+  @Override
+  public String getAnimationState() {
+    return null;
   }
 
   public Position2D getLeftTopMostPosn() {
-    return leftTopMostPosn;
+    return am.getLeftTopMostPosn();
   }
 }

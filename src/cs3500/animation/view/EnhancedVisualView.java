@@ -1,84 +1,62 @@
 package cs3500.animation.view;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.AnimationModelImpl;
+import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.ImmAnimationModel;
-import cs3500.animation.view.Handlers.*;
+import cs3500.animation.view.Panels.ButtonPanel;
+import cs3500.animation.view.Panels.MenuPanel;
+import cs3500.animation.view.Panels.VisualPanel;
 
 public class EnhancedVisualView extends JFrame implements EnhancedIView {
-  private JButton startButton;
-  private JButton stopButton;
-  private JButton resumeButton;
-  private JButton restartButton;
-  private JButton increaseSpeedButton;
-  private JButton decreaseSpeedButton;
-  private JButton toggleLoopButton;
-  private JPanel buttonPanel;
+  private ButtonPanel buttonPanel;
+
+  private MenuPanel menuBar;
   private VisualPanel vPanel;
   private VisualView vView;
+  private AnimationModel mm;
 
-  public EnhancedVisualView(AnimationModel model, int speed) {
+  public EnhancedVisualView(IReadOnlyModel model, int speed) {
     super();
-    this.vView = new VisualView(model,speed);
+    this.mm = (AnimationModel) model;
+    this.vView = new VisualView(mm, speed);
     this.setTitle(vView.getTitle());
     this.setSize(vView.getSize());
     this.setDefaultCloseOperation(vView.getDefaultCloseOperation());
 
     //use a borderlayout with drawing panel in center and button panel in south
     this.setLayout(vView.getLayout());
-    this.vPanel = new VisualPanel(new ImmAnimationModel(model),speed);
+    this.vPanel = new VisualPanel(mm, speed);
     vPanel.setPreferredSize(new Dimension(500, 500));
     this.add(vPanel, BorderLayout.CENTER);
 
     //set play button
-    buttonPanel = new JPanel();
-    buttonPanel.setLayout(new FlowLayout());
-    this.add(buttonPanel,BorderLayout.SOUTH);
+    buttonPanel = new ButtonPanel();
+    this.add(buttonPanel, BorderLayout.SOUTH);
 
-    //add play button
-    startButton = new JButton("Play");
-    buttonPanel.add(startButton);
-    startButton.addActionListener(new StartHandler(this));
-
-    // add resume button
-    resumeButton = new JButton("Resume");
-    buttonPanel.add(resumeButton);
-    resumeButton.addActionListener(new ResumeHandler(this));
-
-
-    //add stop button
-    stopButton = new JButton("Pause");
-    buttonPanel.add(stopButton);
-    stopButton.addActionListener(new PauseHandler(this));
-
-    //add restart button
-    restartButton = new JButton("Restart");
-    buttonPanel.add(restartButton);
-    restartButton.addActionListener(new RestartHandler(this));
-
-    //add increase speed button
-    increaseSpeedButton = new JButton("+1 speed");
-    buttonPanel.add(increaseSpeedButton);
-    increaseSpeedButton.addActionListener(new IncreaseSpeedHandler(this));
-
-    //add decrease speed Button
-    decreaseSpeedButton = new JButton("-1 speed");
-    buttonPanel.add(decreaseSpeedButton);
-    decreaseSpeedButton.addActionListener(new DecreaseSpeedHandler(this));
-
-    //add toggle loop button
-    toggleLoopButton = new JButton("Toggle Loop On");
-    buttonPanel.add(toggleLoopButton);
-    toggleLoopButton.addActionListener(new LoopHandler(this));
+    //sets the menu bar
+    menuBar = new MenuPanel(mm.getShapes());
+    this.add(menuBar, BorderLayout.WEST);
   }
 
+  public void setButtonListeners(ActionListener clicks) {
+    buttonPanel.setListeners(clicks);
+    menuBar.setButtonListener(clicks);
+  }
 
   @Override
   public void makeVisible() {
     setVisible(true);
+  }
+
+  @Override
+  public AnimationModel getModel() {
+    return this.mm;
   }
 
   @Override
@@ -114,10 +92,24 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   @Override
   public void toggleLoop() {
     vPanel.toggleLoop();
-    if(vPanel.getLoop()){
-      toggleLoopButton.setText("Toggle Loop On");
+    if (vPanel.getLoop()) {
+      buttonPanel.setToggleLoopButton("Toggle Loop On");
     } else {
-      toggleLoopButton.setText("Toggle Loop Off");
+      buttonPanel.setToggleLoopButton("Toggle Loop Off");
     }
+  }
+
+  public String getCreateShapeCommand() {
+    String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
+    menuBar.addList(menuBar.getShapeName(), menuBar.getShapeType());
+    this.menuBar.setShapeText("");
+    return command;
+  }
+
+  public String getCreateTransformationCommand() {
+    String command = menuBar.getTransformationFields();
+    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
+            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+    return command;
   }
 }

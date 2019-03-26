@@ -12,7 +12,7 @@ public class StartHandler implements ActionListener {
   }
   @Override
   public void actionPerformed(ActionEvent e) {
-    if(evv.getVisualPanel().getTick() != 0) {
+    if (evv.getVisualPanel().getTick() != 0) {
 
     } else{
       evv.startTimer();

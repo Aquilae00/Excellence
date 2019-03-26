@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.IReadOnlyModel;
 
 /**
  * This view will show a textual description of the animation. This description should be the
@@ -20,7 +21,7 @@ public class TextualView extends AView {
    * @param outFileName given desired output file name
    * @param scale       given the scale of tick
    */
-  public TextualView(AnimationModel model, String outFileName, int scale) {
+  public TextualView(IReadOnlyModel model, String outFileName, int scale) {
     super();
     super.model = model;
     super.tickScale = scale;

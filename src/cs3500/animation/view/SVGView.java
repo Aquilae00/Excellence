@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.Transformation;
 
 /**
@@ -23,7 +24,7 @@ public class SVGView extends AView {
    * @param outFileName given desired output file name
    * @param scale       given the scale of tick
    */
-  public SVGView(AnimationModel m, String outFileName, int scale) {
+  public SVGView(IReadOnlyModel m, String outFileName, int scale) {
     super.model = m;
     super.tickScale = scale;
     if (outFileName.equals("System.out")) {

@@ -1,0 +1,71 @@
+package cs3500.animation.view.Panels;
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class ButtonPanel extends JPanel {
+  private JButton startButton;
+  private JButton stopButton;
+  private JButton resumeButton;
+  private JButton restartButton;
+  private JButton increaseSpeedButton;
+  private JButton decreaseSpeedButton;
+  private JButton toggleLoopButton;
+
+  public ButtonPanel() {
+    this.setLayout(new FlowLayout());
+
+
+    //add play button
+    startButton = new JButton("Play");
+    startButton.setActionCommand("Play");
+    this.add(startButton);
+
+    // add resume button
+    resumeButton = new JButton("Resume");
+    resumeButton.setActionCommand("Resume");
+    this.add(resumeButton);
+
+
+    //add stop button
+    stopButton = new JButton("Pause");
+    stopButton.setActionCommand("Pause");
+    this.add(stopButton);
+
+    //add restart button
+    restartButton = new JButton("Restart");
+    restartButton.setActionCommand("Restart");
+    this.add(restartButton);
+
+    //add increase speed button
+    increaseSpeedButton = new JButton("+1 speed");
+    increaseSpeedButton.setActionCommand("+1 speed");
+    this.add(increaseSpeedButton);
+
+    //add decrease speed Button
+    decreaseSpeedButton = new JButton("-1 speed");
+    decreaseSpeedButton.setActionCommand("-1 speed");
+    this.add(decreaseSpeedButton);
+
+    //add toggle loop button
+    toggleLoopButton = new JButton("Toggle Loop On");
+    toggleLoopButton.setActionCommand("Toggle Loop On");
+    this.add(toggleLoopButton);
+  }
+
+  public void setListeners(ActionListener clicks) {
+    this.startButton.addActionListener(clicks);
+    this.resumeButton.addActionListener(clicks);
+    this.stopButton.addActionListener(clicks);
+    this.restartButton.addActionListener(clicks);
+    this.increaseSpeedButton.addActionListener(clicks);
+    this.decreaseSpeedButton.addActionListener(clicks);
+    this.toggleLoopButton.addActionListener(clicks);
+  }
+
+  public void setToggleLoopButton(String text) {
+    this.toggleLoopButton.setText(text);
+  }
+}

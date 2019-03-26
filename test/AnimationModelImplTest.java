@@ -11,6 +11,21 @@ import cs3500.animation.model.position.Position2D;
  * The class testing animation model.
  */
 public class AnimationModelImplTest {
+
+  @Test
+  public void testAddShape() {
+    AnimationModel m = new AnimationModelImpl.Builder().setBounds(0, 0, 0, 0)
+            .declareShape("R", "rectangle")
+            .addKeyframe("R", 1, 200, 200, 50, 100, 255, 0, 0)
+            .addMotion("R", 1, 200, 200, 50, 100, 255, 0, 0,
+                    10,
+                    200, 200, 50, 100, 255, 0, 0)
+            .build();
+    m.addShape("disk4","rectangle");
+    for (String s : m.getShapes().keySet()) {
+      System.out.println(s);
+    }
+  }
   @Test
   public void testGetState() {
     AnimationModel m = new AnimationModelImpl.Builder().setBounds(0, 0, 0, 0)

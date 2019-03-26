@@ -1,4 +1,4 @@
-package cs3500.animation.view;
+package cs3500.animation.view.Panels;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.ImmAnimationModel;
 import cs3500.animation.model.Transformation;
 import cs3500.animation.model.Tweening;
@@ -21,7 +22,7 @@ import cs3500.animation.model.Tweening;
  * colors and shapes forms.
  */
 public class VisualPanel extends JPanel implements ActionListener {
-  private ImmAnimationModel model;
+  private IReadOnlyModel model;
   private int tick;
   private int speed;
   private boolean loop;
@@ -33,7 +34,7 @@ public class VisualPanel extends JPanel implements ActionListener {
    * Visual panel constructor that takes in model.
    * @param model AnimationModel class.
    */
-  public VisualPanel(ImmAnimationModel model,int speed) {
+  public VisualPanel(IReadOnlyModel model,int speed) {
     super();
     this.model = model;
     Tweening tween = new Tweening();
@@ -117,5 +118,11 @@ public class VisualPanel extends JPanel implements ActionListener {
 
   public boolean getLoop() {
     return this.loop;
+  }
+
+  public void insertTransformation(String name, int t1, double x1, double y1,
+                            int w1, int h1, int r1, int g1, int b1) {
+    Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
+    this.transformations.add(temp);
   }
 }
