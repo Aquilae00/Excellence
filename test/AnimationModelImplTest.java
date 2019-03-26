@@ -23,8 +23,9 @@ public class AnimationModelImplTest {
 
     Assert.assertEquals("canvas 0 0 0 0\n" +
             "shape R rectangle\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 50 100 255 0 0    10 200 200 50 100 255 0 0\n", m.getAnimationState());
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    10 200 200 50 100 255 0 0\n",
+            m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
 

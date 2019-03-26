@@ -5,7 +5,7 @@ import cs3500.animation.view.IView;
 /**
  * The class that is used to run the model and view.
  */
-public class Controller {
+public class Controller implements IController{
   private IView view;
 
   /**
@@ -17,9 +17,7 @@ public class Controller {
     this.view = v;
   }
 
-  /**
-   * Make the controller launch the JPanel, making it visible.
-   */
+  @Override
   public void goAnimate() {
     this.view.makeVisible();
   }

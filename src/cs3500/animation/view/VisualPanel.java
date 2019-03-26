@@ -51,7 +51,7 @@ public class VisualPanel extends JPanel implements ActionListener {
     Graphics2D g2d = (Graphics2D) g;
     super.paintComponent(g);
       for (Transformation t : transformations) {
-        if (t.getT1() == tick && t.getT2() == tick) {
+        if (t.getT1() == tick) {
           g2d.setColor(new Color(t.getColor1().getRed(), t.getColor1().getGreen(),
                   t.getColor1().getBlue()));
           if (model.getShapes().get(t.getName()).equals("ellipse")) {
@@ -74,7 +74,7 @@ public class VisualPanel extends JPanel implements ActionListener {
     tick++;
 
     if(loop) {
-      if (tick > transformations.size()) {
+      if (tick > transformations.size() / 2) {
         tick = 0;
       }
     }
@@ -113,5 +113,9 @@ public class VisualPanel extends JPanel implements ActionListener {
     } else {
       this.loop = true;
     }
+  }
+
+  public boolean getLoop() {
+    return this.loop;
   }
 }

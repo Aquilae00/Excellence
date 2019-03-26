@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import cs3500.animation.controller.Controller;
+import cs3500.animation.controller.IController;
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.animator.util.AnimationReader;
 import cs3500.animation.model.AnimationModelImpl.Builder;
@@ -25,7 +26,7 @@ public final class Excellence {
   public static void main(String[] args) {
     AnimationModel model;
     IView view;
-    Controller controller = null;
+    IController controller = null;
     Readable file = null;
     String outFile = "System.out";
     String viewType = "";

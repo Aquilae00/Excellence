@@ -46,6 +46,7 @@ public class AnimationModelImpl implements AnimationModel {
         if (t.getName().equals(name)) {
           s.append("motion" + " " +
                   name + " " + t.getT1() + " " + t.getPosition1().getX() + " "
+                  + t.getPosition1().getY() + " "
                   + t.getDimn1().getWidth() + " " + t.getDimn1().getHeight() + " "
                   + t.getColor1().getRed() + " " + t.getColor1().getGreen() + " "
                   + t.getColor1().getBlue()

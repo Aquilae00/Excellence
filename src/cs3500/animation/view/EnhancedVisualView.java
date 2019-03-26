@@ -70,7 +70,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     decreaseSpeedButton.addActionListener(new DecreaseSpeedHandler(this));
 
     //add toggle loop button
-    toggleLoopButton = new JButton("Loop On/Off");
+    toggleLoopButton = new JButton("Toggle Loop On");
     buttonPanel.add(toggleLoopButton);
     toggleLoopButton.addActionListener(new LoopHandler(this));
   }
@@ -114,5 +114,10 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   @Override
   public void toggleLoop() {
     vPanel.toggleLoop();
+    if(vPanel.getLoop()){
+      toggleLoopButton.setText("Toggle Loop On");
+    } else {
+      toggleLoopButton.setText("Toggle Loop Off");
+    }
   }
 }
