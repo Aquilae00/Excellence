@@ -3,6 +3,9 @@ package cs3500.animation.model;
 import java.util.ArrayList;
 import java.util.function.Function;
 
+/**
+ * The class that is used to get the value in between two numbers.
+ */
 public class Tweening implements Function<ArrayList<Transformation>, ArrayList<Transformation>> {
 
   @Override
@@ -26,6 +29,16 @@ public class Tweening implements Function<ArrayList<Transformation>, ArrayList<T
     return al;
   }
 
+  /**
+   * It brings the value by the difference and divide by the number of tick to get the average.
+   *
+   * @param t the middle tick
+   * @param t1 initial tick
+   * @param a the a component
+   * @param t2 the final tick
+   * @param b b component
+   * @return the average number of change
+   */
   private double tween(int t,int t1,double a, int t2, double b) {
     if (t2 == t1) {
       return a;

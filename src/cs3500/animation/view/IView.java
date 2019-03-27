@@ -15,6 +15,11 @@ public interface IView {
    */
   void makeVisible();
 
+  /**
+   * It gets the readonly model.
+   *
+   * @return readonly model of view.
+   */
   IReadOnlyModel getModel();
   /*
   TODO:

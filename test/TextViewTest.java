@@ -40,8 +40,8 @@ public class TextViewTest {
 
     assertEquals("canvas 0 0 10 20\n" +
             "shape R rectangle\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 50 100 255 0 0    1000 600 100 10 1000 0 255 0\n", data);
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    1000 600 100 10 1000 0 255 0\n", data);
   }
 
   // tests 2 action one R
@@ -70,9 +70,9 @@ public class TextViewTest {
 
     assertEquals("canvas 0 0 10 20\n" +
             "shape R rectangle\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 50 100 255 0 0    1000 600 100 10 1000 0 255 0\n" +
-            "motion R 1000 600 10 1000 0 255 0    1500 800 700 500 500 0 255 0\n", data);
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    1000 600 100 10 1000 0 255 0\n" +
+            "motion R 1000 600 100 10 1000 0 255 0    1500 800 700 500 500 0 255 0\n", data);
   }
 
   // tests 2 Shape one action
@@ -103,11 +103,11 @@ public class TextViewTest {
 
     assertEquals("canvas 0 0 0 0\n" +
             "shape R rectangle\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
             "shape E ellipse\n" +
-            "motion E 10 250 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
-            "motion E 10 200 10 20 255 0 0    30 200 250 40 20 0 255 0\n", data);
+            "motion E 10 250 200 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
+            "motion E 10 200 100 10 20 255 0 0    30 200 250 40 20 0 255 0\n", data);
   }
 
   //checks if file does not exist

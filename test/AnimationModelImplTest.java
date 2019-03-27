@@ -54,10 +54,11 @@ public class AnimationModelImplTest {
                     200, 200, 50, 100, 255, 0, 0)
             .build();
 
-    Assert.assertEquals("canvas 0 0 0 0\n" +
+    Assert.assertEquals(
+            "canvas 0 0 0 0\n" +
             "shape R rectangle\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n", m.getAnimationState());
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n", m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
 
@@ -105,11 +106,11 @@ public class AnimationModelImplTest {
 
     Assert.assertEquals("canvas 0 0 0 0\n" +
                     "shape R rectangle\n" +
-                    "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-                    "motion R 1 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
                     "shape E ellipse\n" +
-                    "motion E 10 250 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
-                    "motion E 10 200 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
+                    "motion E 10 250 200 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
+                    "motion E 10 200 100 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
             , m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
@@ -130,9 +131,9 @@ public class AnimationModelImplTest {
 
     Assert.assertEquals("canvas 0 0 0 0\n" +
                     "shape R rectangle\n" +
-                    "motion R 1 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
                     "shape E ellipse\n" +
-                    "motion E 10 200 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
+                    "motion E 10 200 100 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
             , m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
@@ -189,12 +190,12 @@ public class AnimationModelImplTest {
 
     Assert.assertEquals("canvas 0 0 0 0\n" +
                     "shape R rectangle\n" +
-                    "motion R 1 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-                    "motion R 1 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
-                    "motion R 20 200 50 100 255 0 0    30 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    20 200 200 50 100 255 0 0\n" +
+                    "motion R 20 200 200 50 100 255 0 0    30 200 200 50 100 255 0 0\n" +
                     "shape E ellipse\n" +
-                    "motion E 10 250 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
-                    "motion E 10 200 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
+                    "motion E 10 250 200 10 20 0 255 0    10 250 200 10 20 0 255 0\n" +
+                    "motion E 10 200 100 10 20 255 0 0    30 200 250 40 20 0 255 0\n"
             , m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
@@ -272,7 +273,7 @@ public class AnimationModelImplTest {
                     200, 200, 50, 100, 255, 0, 0)
             .addMotion("R", 10, 200, 200, 50, 100, 255, 0,
                     0, 20,
-                    200, 200, 50, 100, 255, 0, 0).build();
+                    200, 200, 50, 100, 255,0,0).build();
     Assert.assertEquals("rectangle", m.getShapes().get("R"));
   }
 

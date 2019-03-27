@@ -6,6 +6,9 @@ import java.util.Map;
 import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.model.position.Position2D;
 
+/**
+ * The interface for the read only model.
+ */
 public interface IReadOnlyModel {
   /**
    * Return a string that represents the current log of animation. Lists out the history of

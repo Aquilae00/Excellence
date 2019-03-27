@@ -18,6 +18,11 @@ public abstract class AView extends JFrame implements IView {
     setVisible(false);
   }
 
+  /**
+   * It returns the model of the readonly model.
+   *
+   * @return read only model
+   */
   public IReadOnlyModel getModel() {
     return this.model;
   }

@@ -46,8 +46,11 @@ public class VisualPanel extends JPanel implements ActionListener {
     this.setBackground(Color.WHITE);
   }
 
-
-
+  /**
+   * It draws the interface based on the given graphics.
+   *
+   * @param g the graphic used to design interface
+   */
   protected void paintComponent(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
     super.paintComponent(g);
@@ -82,32 +85,56 @@ public class VisualPanel extends JPanel implements ActionListener {
     repaint();
   }
 
+  /**
+   * It starts the timer of the animation.
+   */
   public void startTimer() {
     this.timer.start();
   }
 
+  /**
+   * It stops the timer of the animation.
+   */
   public void stopTimer(){
     this.timer.stop();
   }
 
+  /**
+   * It restarts the timer of the animation.
+   */
   public void restartTimer() {
     tick = 0;
     this.timer.restart();
   }
+
+  /**
+   * It gets the current tick of the animation.
+   *
+   * @return current tick
+   */
   public int getTick() {
     return this.tick;
   }
 
+  /**
+   * It increments the speed by 1.
+   */
   public void increaseSpeed() {
     this.speed++;
     timer.setDelay(1000/speed);
   }
 
+  /**
+   * It decreases the speed by 1.
+   */
   public void decreaseSpeed() {
     this.speed--;
     timer.setDelay(1000/speed);
   }
 
+  /**
+   * It toggles the loop.
+   */
   public void toggleLoop() {
     if (this.loop) {
       this.loop = false;
@@ -116,10 +143,29 @@ public class VisualPanel extends JPanel implements ActionListener {
     }
   }
 
+  /**
+   * It gets the current loop.
+   *
+   * @return current loop
+   */
   public boolean getLoop() {
     return this.loop;
   }
 
+  /**
+   * It makes the copy of trnasformation with given component and
+   * inserts the transformation into the list of transformation.
+   *
+   * @param name the name of shape
+   * @param t1 initial tick
+   * @param x1 initial x position
+   * @param y1 initial y position
+   * @param w1 initial width
+   * @param h1 initial height
+   * @param r1 initial red color
+   * @param g1 initial green color
+   * @param b1 initial blue color
+   */
   public void insertTransformation(String name, int t1, double x1, double y1,
                             int w1, int h1, int r1, int g1, int b1) {
     Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);

@@ -32,6 +32,11 @@ public class TextualView extends AView {
     }
   }
 
+  /**
+   * It creates the txt file of the given name
+   *
+   * @param s name of the txt file that is to be created.
+   */
   private void generateTXTFile(String s) {
     try {
       File file = new File(s);

@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 import cs3500.animation.view.EnhancedVisualView;
 
+/**
+ * The controller that enables the user to see the interface.
+ */
 public class EnhancedController implements EnhancedIController, ActionListener {
   private EnhancedVisualView evv;
 

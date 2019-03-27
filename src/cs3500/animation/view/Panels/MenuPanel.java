@@ -9,6 +9,9 @@ import javax.swing.*;
 
 import cs3500.animation.model.Transformation;
 
+/**
+ * The class designed for menu in User Interface.
+ */
 public class MenuPanel extends JPanel {
   private Dimension borderDim;
   private DefaultListModel<String> shapes;
@@ -40,6 +43,12 @@ public class MenuPanel extends JPanel {
   private JLabel labelGreen;
   private JLabel labelBlue;
   private Map<String,String> set;
+
+  /**
+   * Menupanel that is constructed with map of string.
+   *
+   * @param set the set of strings
+   */
   public MenuPanel(Map<String,String> set) {
     this.set = set;
 
@@ -133,14 +142,29 @@ public class MenuPanel extends JPanel {
     this.add(createTrans);
   }
 
+  /**
+   * It gets the name of the shape.
+   *
+   * @return name of shape
+   */
   public String getShapeName() {
     return this.inputName.getText();
   }
 
+  /**
+   * It gets the type of the shape.
+   *
+   * @return type of shape.
+   */
   public String getShapeType() {
     return this.inputType.getText();
   }
 
+  /**
+   * It gets the field of the transformation
+   *
+   * @return
+   */
   public String getTransformationFields() {
     StringBuilder temp = new StringBuilder();
     temp.append(shapeName.getText())
@@ -154,48 +178,114 @@ public class MenuPanel extends JPanel {
             .append(" ").append(blue.getText());
     return temp.toString();
   }
+
+  /**
+   * It sets the text of the shape by given string.
+   *
+   * @param s the text of shape
+   */
   public void setShapeText(String s) {
     this.inputName.setText(s);
     this.inputType.setText(s);
   }
 
+  /**
+   * It sets the role of each button.
+   *
+   * @param clicks on mouse click
+   */
   public void setButtonListener(ActionListener clicks) {
     this.addShape.addActionListener(clicks);
     this.createTrans.addActionListener(clicks);
   }
 
+  /**
+   * It adds one element with given type and name to the list.
+   *
+   * @param name the name of shape
+   * @param type the type of shape
+   */
   public void addList(String name, String type) {
     this.shapes.addElement(name + " - " + type);
   }
 
+  /**
+   * It gets the text shape name.
+   *
+   * @return text shape name
+   */
   public String getTShapeName() {
     return this.shapeName.getText();
   }
 
+  /**
+   * It gets the text shape tick.
+   *
+   * @return text shape tick
+   */
   public int getTShapeTick() {
     return Integer.parseInt(this.shapeTick.getText());
   }
 
+  /**
+   * It gets the text position x.
+   *
+   * @return text position x
+   */
   public Double getTPosX() {
     return Double.parseDouble(this.posX.getText());
   }
+
+  /**
+   * It gets the text position y.
+   *
+   * @return text position y
+   */
   public Double getTPosY() {
     return  Double.parseDouble(this.posY.getText());
   }
 
+  /**
+   * It gets the text width.
+   *
+   * @return text width
+   */
   public int getTWidth() {
     return Integer.parseInt(this.width.getText());
   }
 
+  /**
+   * It gets the text height.
+   *
+   * @return text height
+   */
   public int getTHeight() {
     return Integer.parseInt(this.height.getText());
   }
+
+  /**
+   * It gets the text red color.
+   *
+   * @return text red color
+   */
   public int getTRed() {
     return Integer.parseInt(this.red.getText());
   }
+
+  /**
+   * It gets the text green color.
+   *
+   * @return text green color
+   */
   public int getTGreen() {
     return Integer.parseInt(this.green.getText());
   }
+
+  /**
+   * It gets the text blue color.
+   *
+   * @return text blue color
+   */
   public int getTBlue() {
     return Integer.parseInt(this.blue.getText());
   }

@@ -13,14 +13,23 @@ import cs3500.animation.view.Panels.ButtonPanel;
 import cs3500.animation.view.Panels.MenuPanel;
 import cs3500.animation.view.Panels.VisualPanel;
 
+/**
+ * The visual view that is used to set up the animation.
+ */
 public class EnhancedVisualView extends JFrame implements EnhancedIView {
-  private ButtonPanel buttonPanel;
 
+  private ButtonPanel buttonPanel;
   private MenuPanel menuBar;
   private VisualPanel vPanel;
   private VisualView vView;
   private AnimationModel mm;
 
+  /**
+   * The visual view that takes in readonly model and the speed of animation.
+   *
+   * @param model readonly model
+   * @param speed speed of animation
+   */
   public EnhancedVisualView(IReadOnlyModel model, int speed) {
     super();
     this.mm = (AnimationModel) model;
@@ -44,6 +53,11 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     this.add(menuBar, BorderLayout.WEST);
   }
 
+  /**
+   * It sets the role of the button.
+   *
+   * @param clicks on mouse click
+   */
   public void setButtonListeners(ActionListener clicks) {
     buttonPanel.setListeners(clicks);
     menuBar.setButtonListener(clicks);
@@ -99,6 +113,11 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     }
   }
 
+  /**
+   * It gives the command for the shape.
+   *
+   * @return the command
+   */
   public String getCreateShapeCommand() {
     String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
     menuBar.addList(menuBar.getShapeName(), menuBar.getShapeType());
@@ -106,6 +125,11 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     return command;
   }
 
+  /**
+   * It gives the coomand for the transformation.
+   *
+   * @return command to create transformation.
+   */
   public String getCreateTransformationCommand() {
     String command = menuBar.getTransformationFields();
     vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
