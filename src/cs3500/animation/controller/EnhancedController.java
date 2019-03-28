@@ -25,6 +25,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
 
         } else {
           evv.startTimer();
+          evv.setLabelSpeed();
         }
         break;
       case "Resume":
@@ -38,9 +39,11 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         break;
       case "+1 speed":
         evv.increaseSpeed();
+        evv.setLabelSpeed();
         break;
       case "-1 speed":
         evv.decreaseSpeed();
+        evv.setLabelSpeed();
         break;
       case "Toggle Loop On":
         evv.toggleLoop();
@@ -54,12 +57,23 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         }
         break;
       case "addT":
-        String command2 = evv.getCreateTransformationCommand();
+        String command2 = evv.getTransformationCommand();
         try {
           processTButtonCommand(command2);
         } catch (Exception ee) {
           ee.printStackTrace();
         }
+        evv.insertTransformation();
+        evv.clearMenuTrans();
+//      case "delT":
+//        String command3 = evv.getTransformationCommand();
+//        try {
+//          processTButtonCommand(command3);
+//        } catch (Exception ee) {
+//          ee.printStackTrace();
+//        }
+//        evv.removeTransformation();
+//        evv.clearMenuTrans();
       default:
         break;
     }

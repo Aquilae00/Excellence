@@ -171,4 +171,18 @@ public class VisualPanel extends JPanel implements ActionListener {
     Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
     this.transformations.add(temp);
   }
+
+  /**
+   * Get the speed of this panel.
+   * @return speed
+   */
+  public int getSpeed() {
+    return this.speed;
+  }
+
+  public void removeTransformation(String name, int t1, double x1, double y1,
+                                   int w1, int h1, int r1, int g1, int b1) {
+    Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
+    this.transformations.remove(temp);
+  }
 }

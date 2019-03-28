@@ -32,8 +32,6 @@ public class MenuPanel extends JPanel {
   private JTextField red;
   private JTextField green;
   private JTextField blue;
-  private JButton createTrans;
-  private JLabel labelShapeName;
   private JLabel labelTick;
   private JLabel labelX;
   private JLabel labelY;
@@ -42,6 +40,8 @@ public class MenuPanel extends JPanel {
   private JLabel labelRed;
   private JLabel labelGreen;
   private JLabel labelBlue;
+  private JButton createTrans;
+  private JButton deleteTrans;
   private Map<String,String> set;
 
   /**
@@ -105,41 +105,53 @@ public class MenuPanel extends JPanel {
     shapeName = new JTextField(10);
     this.add(shapeName);
 
-    labelTick = new JLabel("Tick:    ");
+    labelTick = new JLabel("Tick:     ");
     this.add(labelTick);
     shapeTick = new JTextField(10);
     this.add(shapeTick);
 
-    labelX = new JLabel("X:              ");
+    labelX = new JLabel("X:           ");
     this.add(labelX);
     posX = new JTextField(10);
     this.add(posX);
 
-    labelY = new JLabel("Y:");
-    this.add(labelX);
+    labelY = new JLabel("Y:           ");
+    this.add(labelY);
     posY = new JTextField(10);
     this.add(posY);
 
-    labelWidth = new JLabel("Width:");
+    labelWidth = new JLabel("Width: ");
     this.add(labelWidth);
     width = new JTextField(10);
     this.add(width);
 
+    labelHeight = new JLabel("Height: ");
+    this.add(labelHeight);
     height = new JTextField(10);
     this.add(height);
 
+    labelRed = new JLabel("Red:    ");
+    this.add(labelRed);
     red = new JTextField(10);
     this.add(red);
 
+    labelGreen = new JLabel("Green:  ");
+    this.add(labelGreen);
     green =new JTextField(10);
     this.add(green);
 
+    labelBlue = new JLabel("Blue: ");
+    this.add(labelBlue);
     blue =new JTextField(10);
     this.add(blue);
 
     createTrans = new JButton("Create");
     createTrans.setActionCommand("addT");
     this.add(createTrans);
+
+    deleteTrans = new JButton("Delete");
+    deleteTrans.setActionCommand("delT");
+    this.add(deleteTrans);
   }
 
   /**
@@ -197,6 +209,7 @@ public class MenuPanel extends JPanel {
   public void setButtonListener(ActionListener clicks) {
     this.addShape.addActionListener(clicks);
     this.createTrans.addActionListener(clicks);
+    this.deleteTrans.addActionListener(clicks);
   }
 
   /**
@@ -288,5 +301,17 @@ public class MenuPanel extends JPanel {
    */
   public int getTBlue() {
     return Integer.parseInt(this.blue.getText());
+  }
+
+  public void clearTransField(String s) {
+    this.shapeName.setText(s);
+    this.shapeTick.setText(s);
+    this.posX.setText(s);
+    this.posY.setText(s);
+    this.width.setText(s);
+    this.height.setText(s);
+    this.red.setText(s);
+    this.green.setText(s);
+    this.blue.setText(s);
   }
 }

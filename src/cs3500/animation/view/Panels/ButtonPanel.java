@@ -16,6 +16,7 @@ public class ButtonPanel extends JPanel {
   private JButton increaseSpeedButton;
   private JButton decreaseSpeedButton;
   private JButton toggleLoopButton;
+  private JLabel speedLabel;
 
   /**
    * Button panel that sets the position and function of button.
@@ -23,7 +24,8 @@ public class ButtonPanel extends JPanel {
   public ButtonPanel() {
     this.setLayout(new FlowLayout());
 
-
+    speedLabel = new JLabel("Speed: 0");
+    this.add(speedLabel);
     //add play button
     startButton = new JButton("Play");
     startButton.setActionCommand("Play");
@@ -83,5 +85,13 @@ public class ButtonPanel extends JPanel {
    */
   public void setToggleLoopButton(String text) {
     this.toggleLoopButton.setText(text);
+  }
+
+  /**
+   * Set the Label speed to the given text.
+   * @param text given string
+   */
+  public void setSpeedText(String text) {
+    this.speedLabel.setText(text);
   }
 }

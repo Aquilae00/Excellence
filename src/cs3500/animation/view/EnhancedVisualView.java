@@ -63,6 +63,10 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     menuBar.setButtonListener(clicks);
   }
 
+  public void setLabelSpeed() {
+    buttonPanel.setSpeedText("Speed " + vPanel.getSpeed());
+  }
+
   @Override
   public void makeVisible() {
     setVisible(true);
@@ -130,10 +134,25 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
    *
    * @return command to create transformation.
    */
-  public String getCreateTransformationCommand() {
+  public String getTransformationCommand() {
     String command = menuBar.getTransformationFields();
-    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
-            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
     return command;
+  }
+
+  public void insertTransformation() {
+    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
+            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
+            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+
+  }
+
+//  public void removeTransformation() {
+//    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
+//            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
+//            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+//  }
+
+  public void clearMenuTrans() {
+    menuBar.clearTransField("");
   }
 }
