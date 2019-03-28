@@ -2,8 +2,11 @@ package cs3500.animation.view.Panels;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
+
+import cs3500.animation.model.Transformation;
 
 /**
  * The class designed for buttons in User Interface.
@@ -13,6 +16,7 @@ public class ButtonPanel extends JPanel {
   private JButton stopButton;
   private JButton resumeButton;
   private JButton restartButton;
+  private JButton deleteButton;
   private JButton increaseSpeedButton;
   private JButton decreaseSpeedButton;
   private JButton toggleLoopButton;
@@ -47,6 +51,11 @@ public class ButtonPanel extends JPanel {
     restartButton.setActionCommand("Restart");
     this.add(restartButton);
 
+    // add delete button
+    deleteButton = new JButton("Delete");
+    deleteButton.setActionCommand("Delete");
+    this.add(deleteButton);
+
     //add increase speed button
     increaseSpeedButton = new JButton("+1 speed");
     increaseSpeedButton.setActionCommand("+1 speed");
@@ -73,6 +82,7 @@ public class ButtonPanel extends JPanel {
     this.resumeButton.addActionListener(clicks);
     this.stopButton.addActionListener(clicks);
     this.restartButton.addActionListener(clicks);
+    this.deleteButton.addActionListener(clicks);
     this.increaseSpeedButton.addActionListener(clicks);
     this.decreaseSpeedButton.addActionListener(clicks);
     this.toggleLoopButton.addActionListener(clicks);
@@ -94,4 +104,6 @@ public class ButtonPanel extends JPanel {
   public void setSpeedText(String text) {
     this.speedLabel.setText(text);
   }
+
+
 }

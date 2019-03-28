@@ -2,6 +2,7 @@ package cs3500.animation.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Scanner;
 
 import cs3500.animation.view.EnhancedVisualView;
@@ -36,6 +37,10 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         break;
       case "Restart":
         evv.restartTimer();
+        break;
+      case "Delete":
+        String com = evv.getVisualPanel().mousePressed(e);
+        evv.deleteShape(com);
         break;
       case "+1 speed":
         evv.increaseSpeed();

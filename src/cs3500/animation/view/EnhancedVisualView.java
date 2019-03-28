@@ -9,6 +9,7 @@ import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.AnimationModelImpl;
 import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.ImmAnimationModel;
+import cs3500.animation.model.Transformation;
 import cs3500.animation.view.Panels.ButtonPanel;
 import cs3500.animation.view.Panels.MenuPanel;
 import cs3500.animation.view.Panels.VisualPanel;
@@ -90,6 +91,16 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   @Override
   public void restartTimer() {
     vPanel.restartTimer();
+  }
+
+  @Override
+  public void deleteShape(String name) {
+    vView.getModel().getShapes().remove(name);
+    for(Transformation t: vView.getModel().getTransformations()) {
+      if(t.getName() == name) {
+        vView.getModel().getTransformations().remove(t);
+      }
+    }
   }
 
   @Override

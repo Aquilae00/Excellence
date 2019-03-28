@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -184,5 +185,11 @@ public class VisualPanel extends JPanel implements ActionListener {
                                    int w1, int h1, int r1, int g1, int b1) {
     Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
     this.transformations.remove(temp);
+  }
+
+  // usually better off with mousePressed rather than clicked
+  public String mousePressed(ActionEvent e) {
+    JButton btnPanel = (JButton)e.getSource();
+    return btnPanel.getName();
   }
 }

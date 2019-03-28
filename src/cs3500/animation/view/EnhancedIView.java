@@ -23,6 +23,11 @@ public interface EnhancedIView extends IView {
   void restartTimer();
 
   /**
+   * It deletes the shape from arraylist and all transformation relevant to it.
+   */
+  void deleteShape(String name);
+
+  /**
    * It returns the visual panel of the view.
    *
    * @return visual panel
