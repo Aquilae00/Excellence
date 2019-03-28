@@ -142,6 +142,12 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   }
 
   public String getDeleteShapeCommand() {
+    if (!(menuBar.getShapeType().equals("rectangle") || menuBar.getShapeType().equals("ellipse"))) {
+      throw new IllegalArgumentException("Illegal Type");
+    }
+    if (menuBar.getShapeName().equals("") || menuBar.getShapeType().equals("")) {
+      throw new IllegalArgumentException("Input cannot be empty");
+    }
     String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
     menuBar.removeList(menuBar.getShapeName(), menuBar.getShapeType());
     menuBar.setShapeText("");
