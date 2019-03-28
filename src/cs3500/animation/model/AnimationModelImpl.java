@@ -1,6 +1,7 @@
 package cs3500.animation.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -91,20 +92,26 @@ public class AnimationModelImpl implements AnimationModel {
   }
 
   public void addShape(String name, String type) {
-    this.shapes.put(name,type);
+    this.shapes.put(name, type);
   }
 
   @Override
   public void deleteTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
-    Transformation temp = new Transformation(name,t1,x1,y1,w1,h1,r1,g1,b1);
-    if (!this.transforms.remove(temp)) {
-      throw new IllegalArgumentException("Keyframe Not Found");
+    Iterator<Transformation> iter = transforms.iterator();
+    while (iter.hasNext()) {
+      Transformation t = iter.next();
+      if (t.getName().equals(name) && t.getT1() == t1 && t.getPosition1().getX() == x1
+              && t.getPosition1().getY() == y1 && t.getDimn1().getWidth() == w1
+              && t.getDimn1().getHeight() == h1 && t.getColor1().getRed() == r1
+              && t.getColor1().getGreen() == g1 && t.getColor1().getBlue() == b1) {
+        iter.remove();
+      }
     }
   }
 
   @Override
   public void insertTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
-    Transformation temp = new Transformation(name,t1,x1,y1,w1,h1,r1,g1,b1);
+    Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
     if (!this.transforms.add(temp)) {
       throw new IllegalArgumentException("Keyframe Not Found");
     }
@@ -172,7 +179,6 @@ public class AnimationModelImpl implements AnimationModel {
       this.transforms.add(new Transformation(name, t, x, y, w, h, r, g, b));
       return this;
     }
-
 
 
   }

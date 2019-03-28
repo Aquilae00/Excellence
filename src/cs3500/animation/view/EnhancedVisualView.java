@@ -95,12 +95,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
 
   @Override
   public void deleteShape(String name) {
-    vView.getModel().getShapes().remove(name);
-    for(Transformation t: vView.getModel().getTransformations()) {
-      if(t.getName() == name) {
-        vView.getModel().getTransformations().remove(t);
-      }
-    }
+    vPanel.deleteShape(name);
   }
 
   @Override
@@ -134,9 +129,22 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
    * @return the command
    */
   public String getCreateShapeCommand() {
+    if (!(menuBar.getShapeType().equals("rectangle") || menuBar.getShapeType().equals("ellipse"))) {
+      throw new IllegalArgumentException("Illegal Type");
+    }
     String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
+    if (menuBar.getShapeName().equals("") || menuBar.getShapeType().equals("")) {
+      throw new IllegalArgumentException("Input cannot be empty");
+    }
     menuBar.addList(menuBar.getShapeName(), menuBar.getShapeType());
     this.menuBar.setShapeText("");
+    return command;
+  }
+
+  public String getDeleteShapeCommand() {
+    String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
+    menuBar.removeList(menuBar.getShapeName(), menuBar.getShapeType());
+    menuBar.setShapeText("");
     return command;
   }
 
@@ -146,8 +154,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
    * @return command to create transformation.
    */
   public String getTransformationCommand() {
-    String command = menuBar.getTransformationFields();
-    return command;
+    return menuBar.getTransformationFields();
   }
 
   public void insertTransformation() {
@@ -157,13 +164,21 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
 
   }
 
-//  public void removeTransformation() {
-//    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
-//            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
-//            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
-//  }
+  public void removeTransformation() {
+    vPanel.removeTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
+            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
+            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+  }
 
   public void clearMenuTrans() {
     menuBar.clearTransField("");
+  }
+
+  @Override
+  public void createShape(String name, String type) {
+    if (name == null || type == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    this.getModel().addShape(name, type);
   }
 }

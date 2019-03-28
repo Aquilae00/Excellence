@@ -51,10 +51,7 @@ public class ButtonPanel extends JPanel {
     restartButton.setActionCommand("Restart");
     this.add(restartButton);
 
-    // add delete button
-    deleteButton = new JButton("Delete");
-    deleteButton.setActionCommand("Delete");
-    this.add(deleteButton);
+
 
     //add increase speed button
     increaseSpeedButton = new JButton("+1 speed");
@@ -82,7 +79,6 @@ public class ButtonPanel extends JPanel {
     this.resumeButton.addActionListener(clicks);
     this.stopButton.addActionListener(clicks);
     this.restartButton.addActionListener(clicks);
-    this.deleteButton.addActionListener(clicks);
     this.increaseSpeedButton.addActionListener(clicks);
     this.decreaseSpeedButton.addActionListener(clicks);
     this.toggleLoopButton.addActionListener(clicks);

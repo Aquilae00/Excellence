@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 
@@ -169,8 +171,10 @@ public class VisualPanel extends JPanel implements ActionListener {
    */
   public void insertTransformation(String name, int t1, double x1, double y1,
                             int w1, int h1, int r1, int g1, int b1) {
-    Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
-    this.transformations.add(temp);
+    if (model.getShapes().containsKey(name)) {
+      Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
+      this.transformations.add(temp);
+    }
   }
 
   /**
@@ -183,8 +187,16 @@ public class VisualPanel extends JPanel implements ActionListener {
 
   public void removeTransformation(String name, int t1, double x1, double y1,
                                    int w1, int h1, int r1, int g1, int b1) {
-    Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
-    this.transformations.remove(temp);
+    Iterator<Transformation> iter = transformations.iterator();
+    while (iter.hasNext()) {
+      Transformation t = iter.next();
+      if (t.getName().equals(name) && t.getT1() == t1 && t.getPosition1().getX() == x1
+              && t.getPosition1().getY() == y1 && t.getDimn1().getWidth() == w1
+              && t.getDimn1().getHeight() == h1 && t.getColor1().getRed() == r1
+              && t.getColor1().getGreen() == g1 && t.getColor1().getBlue() == b1) {
+        iter.remove();
+      }
+    }
   }
 
   // usually better off with mousePressed rather than clicked
@@ -192,4 +204,15 @@ public class VisualPanel extends JPanel implements ActionListener {
     JButton btnPanel = (JButton)e.getSource();
     return btnPanel.getName();
   }
+
+  public void deleteShape(String name) {
+    Iterator<Transformation> iter = transformations.iterator();
+    while (iter.hasNext()) {
+      Transformation t = iter.next();
+        if (t.getName().equals(name)) {
+          iter.remove();
+        }
+      }
+      model.getShapes().remove(name);
+    }
 }

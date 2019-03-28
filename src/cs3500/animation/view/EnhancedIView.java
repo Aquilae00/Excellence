@@ -28,6 +28,11 @@ public interface EnhancedIView extends IView {
   void deleteShape(String name);
 
   /**
+   * Create a new shape with the given name and type
+   */
+  void createShape(String name, String type);
+
+  /**
    * It returns the visual panel of the view.
    *
    * @return visual panel

@@ -2,6 +2,7 @@ package cs3500.animation.view.Panels;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +23,7 @@ public class MenuPanel extends JPanel {
   private JTextField inputName;
   private JTextField inputType;
   private JButton addShape;
+  private JButton deleteButton;
   private JScrollPane scroll;
   private JTextField shapeName;
   private JTextField shapeTick;
@@ -96,8 +98,11 @@ public class MenuPanel extends JPanel {
     //create shape button
     addShape = new JButton("Create Shape");
     addShape.setActionCommand("Create");
-    addShape.setPreferredSize(new Dimension(180,50));
     this.add(addShape);
+    // add delete button
+    deleteButton = new JButton("Delete");
+    deleteButton.setActionCommand("Delete");
+    this.add(deleteButton);
 
     //
     labelName = new JLabel("Name:    ");
@@ -210,6 +215,7 @@ public class MenuPanel extends JPanel {
     this.addShape.addActionListener(clicks);
     this.createTrans.addActionListener(clicks);
     this.deleteTrans.addActionListener(clicks);
+    this.deleteButton.addActionListener(clicks);
   }
 
   /**
@@ -222,6 +228,12 @@ public class MenuPanel extends JPanel {
     this.shapes.addElement(name + " - " + type);
   }
 
+  public void removeList(String name,String type) {
+    String element = name + " - " + type;
+    if (this.shapes.contains(element)) {
+      this.shapes.removeElement(element);
+    }
+  }
   /**
    * It gets the text shape name.
    *
