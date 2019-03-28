@@ -25,6 +25,7 @@ public class MenuPanel extends JPanel {
   private JButton addShape;
   private JButton deleteButton;
   private JScrollPane scroll;
+  private JLabel keyframeMenuLabel;
   private JTextField shapeName;
   private JTextField shapeTick;
   private JTextField posX;
@@ -104,56 +105,70 @@ public class MenuPanel extends JPanel {
     deleteButton.setActionCommand("Delete");
     this.add(deleteButton);
 
-    //
+    //label the keyfram menu
+    keyframeMenuLabel = new JLabel("- Keyframe Modification Menu -");
+    this.add(keyframeMenuLabel);
+
+    //shape name input space
     labelName = new JLabel("Name:    ");
     this.add(labelName);
     shapeName = new JTextField(10);
     this.add(shapeName);
 
+    //shape tick input
     labelTick = new JLabel("Tick:     ");
     this.add(labelTick);
     shapeTick = new JTextField(10);
     this.add(shapeTick);
 
+    //x coord input
     labelX = new JLabel("X:           ");
     this.add(labelX);
     posX = new JTextField(10);
     this.add(posX);
 
+    //y coord input
     labelY = new JLabel("Y:           ");
     this.add(labelY);
     posY = new JTextField(10);
     this.add(posY);
 
+    //shape width input
     labelWidth = new JLabel("Width: ");
     this.add(labelWidth);
     width = new JTextField(10);
     this.add(width);
 
+    //shape height input
     labelHeight = new JLabel("Height: ");
     this.add(labelHeight);
     height = new JTextField(10);
     this.add(height);
 
+    //red input
     labelRed = new JLabel("Red:    ");
     this.add(labelRed);
     red = new JTextField(10);
     this.add(red);
 
+    //green input
     labelGreen = new JLabel("Green:  ");
     this.add(labelGreen);
     green =new JTextField(10);
     this.add(green);
 
+    //blue input
     labelBlue = new JLabel("Blue: ");
     this.add(labelBlue);
     blue =new JTextField(10);
     this.add(blue);
 
+    //create keyframe button
     createTrans = new JButton("Create");
     createTrans.setActionCommand("addT");
     this.add(createTrans);
 
+    //delete keyframe button
     deleteTrans = new JButton("Delete");
     deleteTrans.setActionCommand("delT");
     this.add(deleteTrans);
