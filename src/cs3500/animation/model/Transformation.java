@@ -36,7 +36,7 @@ public class Transformation {
                         int w1, int h1, int r1, int g1, int b1) {
     this.name = name;
     this.t1 = t1;
-    this.posn1 = new Position2D((int) x1,(int) y1);
+    this.posn1 = new Position2D((int) x1, (int) y1);
     this.dimn1 = new Dimension2D(w1, h1);
     this.color1 = new Color(r1, g1, b1);
     this.t2 = t1;
@@ -75,7 +75,7 @@ public class Transformation {
     this.dimn1 = new Dimension2D(w1, h1);
     this.color1 = new Color(r1, g1, b1);
     this.t2 = t2;
-    this.posn2 = new Position2D((int) x2, (int)y2);
+    this.posn2 = new Position2D((int) x2, (int) y2);
     this.dimn2 = new Dimension2D(w2, h2);
     this.color2 = new Color(r2, g2, b2);
   }

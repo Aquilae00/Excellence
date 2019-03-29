@@ -2,7 +2,6 @@ package cs3500.animation.view;
 
 import javax.swing.JFrame;
 
-import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.IReadOnlyModel;
 
 /**
@@ -18,11 +17,7 @@ public abstract class AView extends JFrame implements IView {
     setVisible(false);
   }
 
-  /**
-   * It returns the model of the readonly model.
-   *
-   * @return read only model
-   */
+  @Override
   public IReadOnlyModel getModel() {
     return this.model;
   }

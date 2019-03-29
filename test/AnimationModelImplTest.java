@@ -1,10 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.AnimationModelImpl;
-
 import cs3500.animation.model.position.Position2D;
 
 /**
@@ -21,11 +19,13 @@ public class AnimationModelImplTest {
                     10,
                     200, 200, 50, 100, 255, 0, 0)
             .build();
-    m.addShape("disk4","rectangle");
+    m.addShape("disk4", "rectangle");
     for (String s : m.getShapes().keySet()) {
       System.out.println(s);
     }
+    Assert.assertEquals("rectangle", m.getShapes().get("disk4"));
   }
+
   @Test
   public void testGetState() {
     AnimationModel m = new AnimationModelImpl.Builder().setBounds(0, 0, 0, 0)
@@ -37,9 +37,9 @@ public class AnimationModelImplTest {
             .build();
 
     Assert.assertEquals("canvas 0 0 0 0\n" +
-            "shape R rectangle\n" +
-            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 200 50 100 255 0 0    10 200 200 50 100 255 0 0\n",
+                    "shape R rectangle\n" +
+                    "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    10 200 200 50 100 255 0 0\n",
             m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
@@ -56,9 +56,10 @@ public class AnimationModelImplTest {
 
     Assert.assertEquals(
             "canvas 0 0 0 0\n" +
-            "shape R rectangle\n" +
-            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
-            "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n", m.getAnimationState());
+                    "shape R rectangle\n" +
+                    "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n" +
+                    "motion R 1 200 200 50 100 255 0 0    1 200 200 50 100 255 0 0\n",
+            m.getAnimationState());
     System.out.println(m.getAnimationState());
   }
 
@@ -273,7 +274,7 @@ public class AnimationModelImplTest {
                     200, 200, 50, 100, 255, 0, 0)
             .addMotion("R", 10, 200, 200, 50, 100, 255, 0,
                     0, 20,
-                    200, 200, 50, 100, 255,0,0).build();
+                    200, 200, 50, 100, 255, 0, 0).build();
     Assert.assertEquals("rectangle", m.getShapes().get("R"));
   }
 

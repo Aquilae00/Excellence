@@ -1,8 +1,5 @@
 package cs3500.animation.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import cs3500.animation.view.IView;
 
 /**

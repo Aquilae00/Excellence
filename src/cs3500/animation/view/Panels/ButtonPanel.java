@@ -1,17 +1,19 @@
-package cs3500.animation.view.Panels;
+package cs3500.animation.view.panels;
 
-import java.awt.*;
+
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
-import cs3500.animation.model.Transformation;
 
 /**
  * The class designed for buttons in User Interface.
  */
 public class ButtonPanel extends JPanel {
+
   private JButton startButton;
   private JButton stopButton;
   private JButton resumeButton;
@@ -52,7 +54,6 @@ public class ButtonPanel extends JPanel {
     this.add(restartButton);
 
 
-
     //add increase speed button
     increaseSpeedButton = new JButton("+1 speed");
     increaseSpeedButton.setActionCommand("+1 speed");
@@ -64,8 +65,8 @@ public class ButtonPanel extends JPanel {
     this.add(decreaseSpeedButton);
 
     //add toggle loop button
-    toggleLoopButton = new JButton("Toggle Loop On");
-    toggleLoopButton.setActionCommand("Toggle Loop On");
+    toggleLoopButton = new JButton("Toggle Loop Off");
+    toggleLoopButton.setActionCommand("Toggle Loop Off");
     this.add(toggleLoopButton);
   }
 
@@ -95,6 +96,7 @@ public class ButtonPanel extends JPanel {
 
   /**
    * Set the Label speed to the given text.
+   *
    * @param text given string
    */
   public void setSpeedText(String text) {

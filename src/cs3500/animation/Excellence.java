@@ -6,10 +6,9 @@ import java.io.FileReader;
 import cs3500.animation.controller.Controller;
 import cs3500.animation.controller.EnhancedController;
 import cs3500.animation.controller.IController;
-import cs3500.animation.model.AnimationModel;
+import cs3500.animation.model.AnimationModelImpl.Builder;
 import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.animator.util.AnimationReader;
-import cs3500.animation.model.AnimationModelImpl.Builder;
 import cs3500.animation.view.EnhancedVisualView;
 import cs3500.animation.view.IView;
 import cs3500.animation.view.SVGView;
@@ -72,11 +71,11 @@ public final class Excellence {
         controller = new Controller(view);
         break;
       case "visual":
-        view = new VisualView(model,speed);
+        view = new VisualView(model, speed);
         controller = new Controller(view);
         break;
       case "edit":
-        EnhancedVisualView evv = new EnhancedVisualView(model,speed);
+        EnhancedVisualView evv = new EnhancedVisualView(model, speed);
         controller = new EnhancedController(evv);
         break;
       default:

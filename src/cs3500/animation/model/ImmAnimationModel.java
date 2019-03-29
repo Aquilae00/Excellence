@@ -15,37 +15,22 @@ public final class ImmAnimationModel implements IReadOnlyModel {
 
   /**
    * Immutable animation model that takes in the readonly model.
-   *
-   * @param model
    */
   public ImmAnimationModel(IReadOnlyModel model) {
     this.am = model;
   }
 
-  /**
-   * It returns the list of transformation of the model.
-   *
-   * @return list of transformation of the model
-   */
+  @Override
   public ArrayList<Transformation> getTransformations() {
     return am.getTransformations();
   }
 
-
-  /**
-   * It gets the bounding width and height of the animation screen.
-   *
-   * @return the dimension of the screen
-   */
+  @Override
   public Dimension2D getBoundingDimension() {
     return am.getBoundingDimension();
   }
 
-  /**
-   * It gets the shape of the given string.
-   *
-   * @return the map of given string
-   */
+  @Override
   public Map<String, String> getShapes() {
     return am.getShapes();
   }
@@ -60,6 +45,7 @@ public final class ImmAnimationModel implements IReadOnlyModel {
    *
    * @return left top most position
    */
+  @Override
   public Position2D getLeftTopMostPosn() {
     return am.getLeftTopMostPosn();
   }

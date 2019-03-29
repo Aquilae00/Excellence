@@ -1,10 +1,6 @@
 package cs3500.animation.model;
 
 import java.util.ArrayList;
-import java.util.Map;
-
-import cs3500.animation.model.dimension.Dimension2D;
-import cs3500.animation.model.position.Position2D;
 
 /**
  * This interface represents the operations offered by an AnimationModel. Provides the classes that
@@ -27,20 +23,20 @@ public interface AnimationModel extends IReadOnlyModel {
    * @param name the keyword string that can store value.
    * @param type the value that needs to be stored.
    */
-  void addShape(String name,String type);
+  void addShape(String name, String type);
 
   /**
    * It removes the transformation based on the given component.
    *
    * @param name the name of shape
-   * @param t1 the tick
-   * @param x1 the initial position x
-   * @param y1 the initial position y
-   * @param w1 the initial width
-   * @param h1 the initial height
-   * @param r1 the initial red color
-   * @param g1 the initial green color
-   * @param b1 the initial blue color
+   * @param t1   the tick
+   * @param x1   the initial position x
+   * @param y1   the initial position y
+   * @param w1   the initial width
+   * @param h1   the initial height
+   * @param r1   the initial red color
+   * @param g1   the initial green color
+   * @param b1   the initial blue color
    */
   void deleteTransformation(String name, int t1, double x1, double y1,
                             int w1, int h1, int r1, int g1, int b1);
@@ -49,14 +45,14 @@ public interface AnimationModel extends IReadOnlyModel {
    * It creates the transformation with the given component and add it to list of transformation.
    *
    * @param name the name of shape
-   * @param t1 initial tick
-   * @param x1 initial x position
-   * @param y1 initial y position
-   * @param w1 initial width
-   * @param h1 initial height
-   * @param r1 initial red color
-   * @param g1 initial green color
-   * @param b1 initial blue color
+   * @param t1   initial tick
+   * @param x1   initial x position
+   * @param y1   initial y position
+   * @param w1   initial width
+   * @param h1   initial height
+   * @param r1   initial red color
+   * @param g1   initial green color
+   * @param b1   initial blue color
    */
   void insertTransformation(String name, int t1, double x1, double y1,
                             int w1, int h1, int r1, int g1, int b1);

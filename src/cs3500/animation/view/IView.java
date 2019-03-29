@@ -1,6 +1,5 @@
 package cs3500.animation.view;
 
-import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.IReadOnlyModel;
 
 /**
@@ -21,13 +20,5 @@ public interface IView {
    * @return readonly model of view.
    */
   IReadOnlyModel getModel();
-  /*
-  TODO:
-  1. DO I need this interface right here ?
-  2. Shaking image
-  3. the use of read only model
-  4. Having timer control from Interface of EVV
-  5. Invalid delay
-  6. How to adapt the button to panel
-   */
+
 }

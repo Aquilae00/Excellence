@@ -1,30 +1,32 @@
-package cs3500.animation.view.Panels;
+package cs3500.animation.view.panels;
 
-import java.awt.*;
+
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 
-import javax.swing.*;
-
-import cs3500.animation.model.Transformation;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.ListSelectionModel;
 
 /**
  * The class designed for menu in User Interface.
  */
 public class MenuPanel extends JPanel {
-  private Dimension borderDim;
+
   private DefaultListModel<String> shapes;
-  private JList los;
-  private JLabel labelName;
-  private JLabel lablelInputType;
-  private JLabel lableInputName;
   private JTextField inputName;
   private JTextField inputType;
   private JButton addShape;
   private JButton deleteButton;
-  private JScrollPane scroll;
+
   private JLabel keyframeMenuLabel;
   private JTextField shapeName;
   private JTextField shapeTick;
@@ -35,46 +37,56 @@ public class MenuPanel extends JPanel {
   private JTextField red;
   private JTextField green;
   private JTextField blue;
-  private JLabel labelTick;
-  private JLabel labelX;
-  private JLabel labelY;
-  private JLabel labelWidth;
-  private JLabel labelHeight;
-  private JLabel labelRed;
-  private JLabel labelGreen;
-  private JLabel labelBlue;
+
   private JButton createTrans;
   private JButton deleteTrans;
-  private Map<String,String> set;
+  private Map<String, String> set;
 
   /**
    * Menupanel that is constructed with map of string.
    *
    * @param set the set of strings
    */
-  public MenuPanel(Map<String,String> set) {
-    this.set = set;
+  public MenuPanel(Map<String, String> set) {
+    JLabel lableInputName;
+    Dimension borderDim;
+    JList los;
+    JLabel labelName;
+    JLabel lablelInputType;
+    JScrollPane scroll;
+    JLabel keyframeMenuLabel;
+    JLabel labelTick;
+    JLabel labelX;
+    JLabel labelY;
+    JLabel labelWidth;
+    JLabel labelHeight;
+    JLabel labelRed;
+    JLabel labelGreen;
+    JLabel labelBlue;
+    Map<String, String> sSet;
 
-    borderDim = new Dimension(200,200);
+    sSet = set;
+
+    borderDim = new Dimension(200, 200);
     this.setPreferredSize(borderDim);
     this.setLayout(new FlowLayout());
 
     //Label names
     labelName = new JLabel("Shapes Names: ");
-    labelName.setBounds(30,0,100,20);
+    labelName.setBounds(30, 0, 100, 20);
     this.add(labelName);
 
 
     //list the shape names
     shapes = new DefaultListModel<String>();
-    for (String s : this.set.keySet()) {
-      shapes.addElement(s + " - " + set.get(s));
+    for (String s : sSet.keySet()) {
+      shapes.addElement(s);
     }
-    this.los = new JList(shapes);
+    los = new JList(shapes);
     los.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     los.setSelectedIndex(0);
     los.setVisibleRowCount(5);
-    los.setPreferredSize(new Dimension(180,100));
+    los.setPreferredSize(new Dimension(180, 100));
     this.add(los);
 
     //add scroll
@@ -83,14 +95,14 @@ public class MenuPanel extends JPanel {
     this.add(scroll);
 
     //label input
-    lableInputName = new JLabel("Name: ");
+    lableInputName = new JLabel("Name:      ");
     this.add(lableInputName);
     //input of shape name
     inputName = new JTextField(10);
     this.add(inputName);
 
     //type label input
-    this.lablelInputType = new JLabel("Type:  ");
+    lablelInputType = new JLabel("Type:  ");
     this.add(lablelInputType);
     //input of shape type
     inputType = new JTextField(10);
@@ -152,15 +164,15 @@ public class MenuPanel extends JPanel {
     this.add(red);
 
     //green input
-    labelGreen = new JLabel("Green:  ");
+    labelGreen = new JLabel("Green:      ");
     this.add(labelGreen);
-    green =new JTextField(10);
+    green = new JTextField(10);
     this.add(green);
 
     //blue input
-    labelBlue = new JLabel("Blue: ");
+    labelBlue = new JLabel("Blue:      ");
     this.add(labelBlue);
-    blue =new JTextField(10);
+    blue = new JTextField(10);
     this.add(blue);
 
     //create keyframe button
@@ -193,9 +205,7 @@ public class MenuPanel extends JPanel {
   }
 
   /**
-   * It gets the field of the transformation
-   *
-   * @return
+   * It gets the field of the transformation.
    */
   public String getTransformationFields() {
     StringBuilder temp = new StringBuilder();
@@ -216,8 +226,16 @@ public class MenuPanel extends JPanel {
    *
    * @param s the text of shape
    */
-  public void setShapeText(String s) {
+  public void setShapeNameText(String s) {
     this.inputName.setText(s);
+  }
+
+  /**
+   * Sets the type of the input JTextfield.
+   *
+   * @param s the type as string
+   */
+  public void setShapeTypeText(String s) {
     this.inputType.setText(s);
   }
 
@@ -234,21 +252,26 @@ public class MenuPanel extends JPanel {
   }
 
   /**
-   * It adds one element with given type and name to the list.
+   * It adds one element with given and name to the list.
    *
    * @param name the name of shape
-   * @param type the type of shape
    */
-  public void addList(String name, String type) {
-    this.shapes.addElement(name + " - " + type);
+  public void addList(String name) {
+    this.shapes.addElement(name);
   }
 
-  public void removeList(String name,String type) {
-    String element = name + " - " + type;
+  /**
+   * It removes the element with given name.
+   *
+   * @param name name of shape
+   */
+  public void removeList(String name) {
+    String element = name;
     if (this.shapes.contains(element)) {
       this.shapes.removeElement(element);
     }
   }
+
   /**
    * It gets the text shape name.
    *
@@ -282,7 +305,7 @@ public class MenuPanel extends JPanel {
    * @return text position y
    */
   public Double getTPosY() {
-    return  Double.parseDouble(this.posY.getText());
+    return Double.parseDouble(this.posY.getText());
   }
 
   /**
@@ -330,6 +353,11 @@ public class MenuPanel extends JPanel {
     return Integer.parseInt(this.blue.getText());
   }
 
+  /**
+   * It sets the text of the transformation field with the given string.
+   *
+   * @param s string that clears all field
+   */
   public void clearTransField(String s) {
     this.shapeName.setText(s);
     this.shapeTick.setText(s);

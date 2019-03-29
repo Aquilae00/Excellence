@@ -1,8 +1,40 @@
-# Animation
 
 
-We are using the out.svg as the output file and read the file from the test by getting access to the filename from the views. The views take in the file name and model usually as a parameter. The model now has extra methods. It has getLeftTopMostPosn that gets access to the lefttopmost position. GetBoundingDimension that shows how big the width and height of the dimension is. GetShapes method that gets the type string by taking in the input string using Map. And getTransformation that gets transformation which takes in all small values that is used to animate. We also made the abstract class for view to make the code concise because every views needs to be decided whether it should be visible or not. 
 
-In addition, the main method is taking in the argument command line to run animation.  For example, when it takes in the -in small demo.txt -view text -speed 2, it will use smalldemo.txt for the animation file and create a text view with its output going to system.out and a speed of 2 ticks per second. 
-When it takes in -view svg -out out.svg -in buildings.txt, it will use buildings.txt for the animation file, and create an SVG view with its output going to the file out.svg, with a speed of 1 tick per second. When it takes in the -in smalldemo.txt -view text, it will use smalldemo.txt for the animation file and create a text view with its output going to System.out. 
-When it takes in -in smalldemo.txt -speed 50 -view visual: it will use smalldemo.txt for the animation file, and create a visual view to show the animation at a speed of 50 ticks per second. 
+Skip to content
+Using Northeastern University Mail with screen readers
+
+Conversations
+Using 0.64 GB
+Program Policies
+Powered by Google
+Last account activity: 0 minutes ago
+Details
+
+Fixes:
+Model:
+-The Model now has ReadOnlyModel and AnimationModel interfaces
+- ReadOnlyAnimationModel have getters
+- AnimationModel have getters and setters.
+- added Tweening class as a function object to get the transformations inbetween motion.
+
+
+
+View:
+- Now has EnhancedVisualView for a more advanced Visual view with user interfaces, with the following functionality:
+	- Start, pause, resume, and restart (i.e. rewind to beginning and start the animation again) the animation with explicit user input (e.g. key press, button click, etc).
+	- Enable/disable looping: enabling looping should cause the animation to automatically restart once it reaches the end.
+	- Increase or decrease the speed of the animation, as it is being played, and immediately see the results.
+	- Create or delete shapes
+	- Create, delete, or modify keyframes of existing shapes
+- Visual View now works as expected
+- Visual View now doesn't have jittery images
+- SVG file fix of color change
+- Panels are divided to 3 parts, the video playback controls, keyfame editor, and the visual animation panel.
+
+
+Controller:
+- Created an EnhancedController with more functionalities than normal Controller
+- EnhancedController responds to button pressed
+Readme Ass7.txt
+Displaying Readme Ass7.txt.

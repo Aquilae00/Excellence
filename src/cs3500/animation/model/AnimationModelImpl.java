@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.swing.tree.TreeNode;
-
 import cs3500.animation.model.animator.util.AnimationBuilder;
 import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.model.position.Position2D;
@@ -91,12 +89,14 @@ public class AnimationModelImpl implements AnimationModel {
     this.transforms = transformations;
   }
 
+  @Override
   public void addShape(String name, String type) {
     this.shapes.put(name, type);
   }
 
   @Override
-  public void deleteTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
+  public void deleteTransformation(String name, int t1, double x1,
+                                   double y1, int w1, int h1, int r1, int g1, int b1) {
     Iterator<Transformation> iter = transforms.iterator();
     while (iter.hasNext()) {
       Transformation t = iter.next();
@@ -110,7 +110,8 @@ public class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public void insertTransformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1) {
+  public void insertTransformation(String name, int t1, double x1,
+                                   double y1, int w1, int h1, int r1, int g1, int b1) {
     Transformation temp = new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1);
     if (!this.transforms.add(temp)) {
       throw new IllegalArgumentException("Keyframe Not Found");

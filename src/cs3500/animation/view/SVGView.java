@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.Transformation;
 

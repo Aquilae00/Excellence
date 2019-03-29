@@ -13,6 +13,11 @@ import cs3500.animation.view.EnhancedVisualView;
 public class EnhancedController implements EnhancedIController, ActionListener {
   private EnhancedVisualView evv;
 
+  /**
+   * Controller that takes in enhancedvisualview as constructor.
+   *
+   * @param view the enhanced visual view
+   */
   public EnhancedController(EnhancedVisualView view) {
     this.evv = view;
     evv.setButtonListeners(this);
@@ -22,9 +27,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
       case "Play":
-        if (evv.getVisualPanel().getTick() != 0) {
-
-        } else {
+        if (evv.getVisualPanel().getTick() == 0) {
           evv.startTimer();
           evv.setLabelSpeed();
         }
@@ -54,7 +57,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         evv.decreaseSpeed();
         evv.setLabelSpeed();
         break;
-      case "Toggle Loop On":
+      case "Toggle Loop Off":
         evv.toggleLoop();
         break;
       case "Create":
@@ -74,7 +77,9 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         } catch (Exception ee) {
           ee.printStackTrace();
         }
+        evv.retweenPanel();
         evv.insertTransformation();
+
         evv.clearMenuTrans();
         break;
       case "delT":
@@ -98,29 +103,46 @@ public class EnhancedController implements EnhancedIController, ActionListener {
     evv.createShape(s.next(), s.next());
   }
 
+  /**
+   * It processes the delete button.
+   *
+   * @param command the command input
+   */
   private void processDeleteShapeButtonCommand(String command) {
     Scanner s = new Scanner(command);
     evv.deleteShape(s.next());
   }
 
+  /**
+   * It processes the create button.
+   *
+   * @param command the input command
+   */
   private void processCreateTButtonCommand(String command) {
     StringBuilder output = new StringBuilder();
     Scanner s = new Scanner(command);
     evv.getModel().insertTransformation(s.next(),
             Integer.parseInt(s.next())
-            , Double.parseDouble(s.next()), Double.parseDouble(s.next()), Integer.parseInt(s.next()),
+            , Double.parseDouble(s.next()), Double.parseDouble(s.next()),
+            Integer.parseInt(s.next()),
             Integer.parseInt(s.next()), Integer.parseInt(s.next()), Integer.parseInt(s.next()),
             Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();
     evv.getVisualPanel().revalidate();
   }
 
+  /**
+   * It processes the delete button.
+   *
+   * @param command the input command
+   */
   private void processDeleteTButtonCommand(String command) {
     StringBuilder output = new StringBuilder();
     Scanner s = new Scanner(command);
     evv.getModel().deleteTransformation(s.next(),
             Integer.parseInt(s.next())
-            , Double.parseDouble(s.next()), Double.parseDouble(s.next()), Integer.parseInt(s.next()),
+            , Double.parseDouble(s.next()), Double.parseDouble(s.next()),
+            Integer.parseInt(s.next()),
             Integer.parseInt(s.next()), Integer.parseInt(s.next()), Integer.parseInt(s.next()),
             Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();

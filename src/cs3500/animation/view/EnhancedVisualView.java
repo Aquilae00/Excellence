@@ -1,18 +1,16 @@
 package cs3500.animation.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 import cs3500.animation.model.AnimationModel;
-import cs3500.animation.model.AnimationModelImpl;
 import cs3500.animation.model.IReadOnlyModel;
-import cs3500.animation.model.ImmAnimationModel;
-import cs3500.animation.model.Transformation;
-import cs3500.animation.view.Panels.ButtonPanel;
-import cs3500.animation.view.Panels.MenuPanel;
-import cs3500.animation.view.Panels.VisualPanel;
+import cs3500.animation.view.panels.ButtonPanel;
+import cs3500.animation.view.panels.MenuPanel;
+import cs3500.animation.view.panels.VisualPanel;
 
 /**
  * The visual view that is used to set up the animation.
@@ -22,7 +20,6 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   private ButtonPanel buttonPanel;
   private MenuPanel menuBar;
   private VisualPanel vPanel;
-  private VisualView vView;
   private AnimationModel mm;
 
   /**
@@ -34,7 +31,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   public EnhancedVisualView(IReadOnlyModel model, int speed) {
     super();
     this.mm = (AnimationModel) model;
-    this.vView = new VisualView(mm, speed);
+    VisualView vView = new VisualView(mm, speed);
     this.setTitle(vView.getTitle());
     this.setSize(vView.getSize());
     this.setDefaultCloseOperation(vView.getDefaultCloseOperation());
@@ -64,6 +61,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     menuBar.setButtonListener(clicks);
   }
 
+  @Override
   public void setLabelSpeed() {
     buttonPanel.setSpeedText("Speed " + vPanel.getSpeed());
   }
@@ -117,17 +115,13 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   public void toggleLoop() {
     vPanel.toggleLoop();
     if (vPanel.getLoop()) {
-      buttonPanel.setToggleLoopButton("Toggle Loop On");
-    } else {
       buttonPanel.setToggleLoopButton("Toggle Loop Off");
+    } else {
+      buttonPanel.setToggleLoopButton("Toggle Loop On");
     }
   }
 
-  /**
-   * It gives the command for the shape.
-   *
-   * @return the command
-   */
+  @Override
   public String getCreateShapeCommand() {
     if (!(menuBar.getShapeType().equals("rectangle") || menuBar.getShapeType().equals("ellipse"))) {
       throw new IllegalArgumentException("Illegal Type");
@@ -136,46 +130,44 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     if (menuBar.getShapeName().equals("") || menuBar.getShapeType().equals("")) {
       throw new IllegalArgumentException("Input cannot be empty");
     }
-    menuBar.addList(menuBar.getShapeName(), menuBar.getShapeType());
-    this.menuBar.setShapeText("");
+    menuBar.addList(menuBar.getShapeName());
+    this.menuBar.setShapeNameText("");
+    this.menuBar.setShapeTypeText("");
     return command;
   }
 
+  @Override
   public String getDeleteShapeCommand() {
-    if (!(menuBar.getShapeType().equals("rectangle") || menuBar.getShapeType().equals("ellipse"))) {
-      throw new IllegalArgumentException("Illegal Type");
-    }
-    if (menuBar.getShapeName().equals("") || menuBar.getShapeType().equals("")) {
+    if (menuBar.getShapeName().equals("")) {
       throw new IllegalArgumentException("Input cannot be empty");
     }
     String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
-    menuBar.removeList(menuBar.getShapeName(), menuBar.getShapeType());
-    menuBar.setShapeText("");
+    menuBar.removeList(menuBar.getShapeName());
+    menuBar.setShapeNameText("");
     return command;
   }
 
-  /**
-   * It gives the coomand for the transformation.
-   *
-   * @return command to create transformation.
-   */
+  @Override
   public String getTransformationCommand() {
     return menuBar.getTransformationFields();
   }
 
+  @Override
   public void insertTransformation() {
-    vPanel.insertTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
-            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
-            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+    vPanel.insertTransformation(menuBar.getTShapeName(), menuBar.getTShapeTick(),
+            menuBar.getTPosX(), menuBar.getTPosY(), menuBar.getTWidth(), menuBar.getTHeight(),
+            menuBar.getTRed(), menuBar.getTGreen(), menuBar.getTBlue());
 
   }
 
+  @Override
   public void removeTransformation() {
-    vPanel.removeTransformation(menuBar.getTShapeName(),menuBar.getTShapeTick(),
-            menuBar.getTPosX(),menuBar.getTPosY(),menuBar.getTWidth(),menuBar.getTHeight(),
-            menuBar.getTRed(),menuBar.getTGreen(),menuBar.getTBlue());
+    vPanel.removeTransformation(menuBar.getTShapeName(), menuBar.getTShapeTick(),
+            menuBar.getTPosX(), menuBar.getTPosY(), menuBar.getTWidth(), menuBar.getTHeight(),
+            menuBar.getTRed(), menuBar.getTGreen(), menuBar.getTBlue());
   }
 
+  @Override
   public void clearMenuTrans() {
     menuBar.clearTransField("");
   }
@@ -186,5 +178,15 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
       throw new IllegalArgumentException("input can't be null");
     }
     this.getModel().addShape(name, type);
+  }
+
+  @Override
+  public void retweenPanel() {
+    this.vPanel.retween();
+  }
+
+  @Override
+  public MenuPanel getMenuPanel() {
+    return this.menuBar;
   }
 }

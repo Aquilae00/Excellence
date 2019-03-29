@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.IReadOnlyModel;
 
 /**
@@ -33,7 +32,7 @@ public class TextualView extends AView {
   }
 
   /**
-   * It creates the txt file of the given name
+   * It creates the txt file of the given name.
    *
    * @param s name of the txt file that is to be created.
    */
