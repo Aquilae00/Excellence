@@ -79,7 +79,7 @@ public class VisualPanel extends JPanel implements ActionListener {
     tick++;
 
     if (loop) {
-      if (tick > transformations.size() / 2) {
+      if (tick > transformations.size() / model.getShapes().size()) {
         tick = 0;
       }
     }
