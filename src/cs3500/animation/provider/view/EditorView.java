@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animation.provider.view;
 
 /**
  * This interface represents a view that contains a VisualView, and can edit it.

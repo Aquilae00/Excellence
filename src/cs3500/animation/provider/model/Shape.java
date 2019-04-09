@@ -1,4 +1,4 @@
-package cs3500.animator.model;
+package cs3500.animation.provider.model;
 
 import cs3500.animator.model.qualities.color.Texture;
 import cs3500.animator.model.qualities.dimensions.Size;

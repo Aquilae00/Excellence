@@ -1,4 +1,4 @@
-package cs3500.animator.model;
+package cs3500.animation.provider.model;
 
 /**
  * This class represents a motion affecting one shape across some range of ticks.

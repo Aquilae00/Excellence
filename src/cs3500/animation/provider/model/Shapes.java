@@ -1,4 +1,4 @@
-package cs3500.animator.model;
+package cs3500.animation.provider.model;
 
 /**
  * A list of all shapes implemented by the animator. Note that though we have several different

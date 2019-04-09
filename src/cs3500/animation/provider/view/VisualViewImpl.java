@@ -1,6 +1,6 @@
-package cs3500.animator.view;
+package cs3500.animation.provider.view;
 
-import cs3500.animator.model.Animation;
+import cs3500.animation.provider.model.Animation;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;

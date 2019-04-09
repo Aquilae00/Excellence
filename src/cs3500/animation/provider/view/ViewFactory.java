@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animation.provider.view;
 
 /**
  * A class capable of instantiating different kinds of views, all compatible to an animation model.

@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animation.provider.view;
 
 import java.io.FileWriter;
 import java.io.IOException;

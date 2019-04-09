@@ -9,6 +9,8 @@ import cs3500.animation.controller.IController;
 import cs3500.animation.model.AnimationModelImpl.Builder;
 import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.animator.util.AnimationReader;
+import cs3500.animation.provider.view.EditorView;
+import cs3500.animator.view.EditorViewImpl;
 import cs3500.animation.view.EnhancedVisualView;
 import cs3500.animation.view.IView;
 import cs3500.animation.view.SVGView;
@@ -78,6 +80,8 @@ public final class Excellence {
         EnhancedVisualView evv = new EnhancedVisualView(model, speed);
         controller = new EnhancedController(evv);
         break;
+      case "provider":
+        EditorView ed = new EditorViewImpl();
       default:
         break;
     }

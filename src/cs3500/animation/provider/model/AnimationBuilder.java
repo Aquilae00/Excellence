@@ -1,4 +1,4 @@
-package cs3500.animator.model;
+package cs3500.animation.provider.model;
 
 /**
  * A provided class used to build an animation.

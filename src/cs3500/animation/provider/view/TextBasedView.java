@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animation.provider.view;
 
 /**
  * This interface represents a model whose output is printed somewhere, whether that's a file or the

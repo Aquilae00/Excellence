@@ -1,4 +1,4 @@
-package cs3500.animator.model;
+package cs3500.animation.provider.model;
 
 import java.util.List;
 import java.util.Map;
