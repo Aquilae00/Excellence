@@ -45,4 +45,5 @@ public interface IReadOnlyModel {
    * @return ArrayList of Transformations
    */
   ArrayList<Transformation> getTransformations();
+
 }
