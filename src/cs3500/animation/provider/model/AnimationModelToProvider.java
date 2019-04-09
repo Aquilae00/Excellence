@@ -83,7 +83,7 @@ public class AnimationModelToProvider implements Animation {
 
   @Override
   public void setBounds(int x, int y, int width, int height) {
-
+      am.getBuilder().setBounds(x, y, width, height);
   }
 
   @Override
@@ -98,6 +98,7 @@ public class AnimationModelToProvider implements Animation {
 
   @Override
   public List<String> getShapeNames() {
+    List<String> ls;
     return null;
   }
 }

@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd1f8b51-d485-4917-9f84-1b0d23f834b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animation/model/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animation/model/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animation/model/AnimationModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animation/model/AnimationModelImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animation/model/IReadOnlyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animation/model/IReadOnlyModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animation/provider/model/AnimationModelToProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animation/provider/model/AnimationModelToProvider.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs3500/animation/provider/model/AnimationModelToProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="80" column="11" lean-forward="true" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
+            <state relative-caret-position="533">
+              <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#419#420#0" expanded="true" />
@@ -68,6 +63,10 @@
                 <element signature="e#592#593#0" expanded="true" />
                 <element signature="e#2103#2104#0" expanded="true" />
                 <element signature="e#2121#2122#0" expanded="true" />
+                <element signature="e#2348#2349#0" expanded="true" />
+                <element signature="e#2380#2381#0" expanded="true" />
+                <element signature="e#2559#2560#0" expanded="true" />
+                <element signature="e#2577#2578#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -553,7 +552,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45236000" />
+    <option name="totallyTimeSpent" value="45465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="17" width="1552" height="856" extended-state="0" />
@@ -980,8 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/animation/provider/model/AnimationModelToProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="80" column="11" lean-forward="true" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
+        <state relative-caret-position="533">
+          <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#419#420#0" expanded="true" />
@@ -994,6 +993,10 @@
             <element signature="e#592#593#0" expanded="true" />
             <element signature="e#2103#2104#0" expanded="true" />
             <element signature="e#2121#2122#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+            <element signature="e#2380#2381#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="e#2577#2578#0" expanded="true" />
           </folding>
         </state>
       </provider>
