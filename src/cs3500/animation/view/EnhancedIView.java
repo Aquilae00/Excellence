@@ -99,10 +99,6 @@ public interface EnhancedIView extends IView {
    */
   void clearMenuTrans();
 
-  /**
-   * It retweens the panel.
-   */
-  void retweenPanel();
 
   /**
    * Ge the Menu Panel of class that implements EnchancedIView interface.
@@ -110,4 +106,11 @@ public interface EnhancedIView extends IView {
    * @return the MenuPanel class
    */
   MenuPanel getMenuPanel();
+
+  /**
+   * Call the ButtonPanel to set the visualText field to the given string.
+   *
+   * @param s the given string
+   */
+  void setVisualText(String s);
 }

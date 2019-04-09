@@ -34,6 +34,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     VisualView vView = new VisualView(mm, speed);
     this.setTitle(vView.getTitle());
     this.setSize(vView.getSize());
+    this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
     this.setDefaultCloseOperation(vView.getDefaultCloseOperation());
 
     //use a borderlayout with drawing panel in center and button panel in south
@@ -123,27 +124,38 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
 
   @Override
   public String getCreateShapeCommand() {
+    String command = null;
     if (!(menuBar.getShapeType().equals("rectangle") || menuBar.getShapeType().equals("ellipse"))) {
       throw new IllegalArgumentException("Illegal Type");
     }
-    String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
     if (menuBar.getShapeName().equals("") || menuBar.getShapeType().equals("")) {
+      buttonPanel.setVisualText("Input cannot be empty");
       throw new IllegalArgumentException("Input cannot be empty");
     }
-    menuBar.addList(menuBar.getShapeName());
-    this.menuBar.setShapeNameText("");
-    this.menuBar.setShapeTypeText("");
+    if (!mm.getShapes().containsKey(this.menuBar.getShapeName())) {
+      command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
+      menuBar.addList(menuBar.getShapeName());
+      this.menuBar.setShapeNameText("");
+      this.menuBar.setShapeTypeText("");
+    } else {
+      buttonPanel.setVisualText("Shape name already exists");
+    }
     return command;
   }
 
   @Override
   public String getDeleteShapeCommand() {
+    String command = null;
     if (menuBar.getShapeName().equals("")) {
       throw new IllegalArgumentException("Input cannot be empty");
     }
-    String command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
-    menuBar.removeList(menuBar.getShapeName());
-    menuBar.setShapeNameText("");
+    if (mm.getShapes().containsKey(this.menuBar.getShapeName())) {
+      command = this.menuBar.getShapeName() + " " + this.menuBar.getShapeType();
+      menuBar.removeList(menuBar.getShapeName());
+      menuBar.setShapeNameText("");
+    } else {
+      buttonPanel.setVisualText("No shape with such name");
+    }
     return command;
   }
 
@@ -162,9 +174,7 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
 
   @Override
   public void removeTransformation() {
-    vPanel.removeTransformation(menuBar.getTShapeName(), menuBar.getTShapeTick(),
-            menuBar.getTPosX(), menuBar.getTPosY(), menuBar.getTWidth(), menuBar.getTHeight(),
-            menuBar.getTRed(), menuBar.getTGreen(), menuBar.getTBlue());
+    vPanel.removeTransformation(menuBar.getTShapeName(), menuBar.getTShapeTick());
   }
 
   @Override
@@ -181,12 +191,12 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
   }
 
   @Override
-  public void retweenPanel() {
-    this.vPanel.retween();
+  public MenuPanel getMenuPanel() {
+    return this.menuBar;
   }
 
   @Override
-  public MenuPanel getMenuPanel() {
-    return this.menuBar;
+  public void setVisualText(String s) {
+    buttonPanel.setVisualText(s);
   }
 }

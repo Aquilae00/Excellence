@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import cs3500.animation.model.IReadOnlyModel;
 
+
 /**
  * This view will show a textual description of the animation. This description should be the
  * description produced from AnimationModelImpl getAnimationState() method.

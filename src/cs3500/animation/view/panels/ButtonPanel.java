@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Dimension;
+
+
 
 
 /**
@@ -18,17 +22,21 @@ public class ButtonPanel extends JPanel {
   private JButton stopButton;
   private JButton resumeButton;
   private JButton restartButton;
-  private JButton deleteButton;
   private JButton increaseSpeedButton;
   private JButton decreaseSpeedButton;
   private JButton toggleLoopButton;
   private JLabel speedLabel;
+  private JTextField visualText;
 
   /**
    * Button panel that sets the position and function of button.
    */
   public ButtonPanel() {
     this.setLayout(new FlowLayout());
+
+    visualText = new JTextField("");
+    visualText.setPreferredSize(new Dimension(150, 20));
+    this.add(visualText);
 
     speedLabel = new JLabel("Speed: 0");
     this.add(speedLabel);
@@ -83,6 +91,15 @@ public class ButtonPanel extends JPanel {
     this.increaseSpeedButton.addActionListener(clicks);
     this.decreaseSpeedButton.addActionListener(clicks);
     this.toggleLoopButton.addActionListener(clicks);
+  }
+
+  /**
+   * Set this visualText field to the given string.
+   *
+   * @param s given string
+   */
+  public void setVisualText(String s) {
+    this.visualText.setText(s);
   }
 
   /**

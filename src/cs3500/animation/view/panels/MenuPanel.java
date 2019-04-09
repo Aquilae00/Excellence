@@ -1,11 +1,10 @@
 package cs3500.animation.view.panels;
 
 
-import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.Map;
-
+import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
@@ -26,8 +25,6 @@ public class MenuPanel extends JPanel {
   private JTextField inputType;
   private JButton addShape;
   private JButton deleteButton;
-
-  private JLabel keyframeMenuLabel;
   private JTextField shapeName;
   private JTextField shapeTick;
   private JTextField posX;
@@ -37,7 +34,6 @@ public class MenuPanel extends JPanel {
   private JTextField red;
   private JTextField green;
   private JTextField blue;
-
   private JButton createTrans;
   private JButton deleteTrans;
   private Map<String, String> set;
@@ -63,9 +59,7 @@ public class MenuPanel extends JPanel {
     JLabel labelRed;
     JLabel labelGreen;
     JLabel labelBlue;
-    Map<String, String> sSet;
-
-    sSet = set;
+    this.set = set;
 
     borderDim = new Dimension(200, 200);
     this.setPreferredSize(borderDim);
@@ -76,23 +70,24 @@ public class MenuPanel extends JPanel {
     labelName.setBounds(30, 0, 100, 20);
     this.add(labelName);
 
+    //add scroll
+    scroll = new JScrollPane();
+
+    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+    scroll.setPreferredSize(new Dimension(180, 100));
+    this.add(scroll);
 
     //list the shape names
     shapes = new DefaultListModel<String>();
-    for (String s : sSet.keySet()) {
+    for (String s : this.set.keySet()) {
       shapes.addElement(s);
     }
     los = new JList(shapes);
     los.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     los.setSelectedIndex(0);
     los.setVisibleRowCount(5);
-    los.setPreferredSize(new Dimension(180, 100));
-    this.add(los);
+    scroll.setViewportView(los);
 
-    //add scroll
-    scroll = new JScrollPane(los);
-    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-    this.add(scroll);
 
     //label input
     lableInputName = new JLabel("Name:      ");
@@ -117,7 +112,7 @@ public class MenuPanel extends JPanel {
     deleteButton.setActionCommand("Delete");
     this.add(deleteButton);
 
-    //label the keyfram menu
+    //label the keyframe menu
     keyframeMenuLabel = new JLabel("- Keyframe Modification Menu -");
     this.add(keyframeMenuLabel);
 

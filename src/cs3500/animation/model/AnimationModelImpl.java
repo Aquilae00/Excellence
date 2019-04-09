@@ -95,15 +95,11 @@ public class AnimationModelImpl implements AnimationModel {
   }
 
   @Override
-  public void deleteTransformation(String name, int t1, double x1,
-                                   double y1, int w1, int h1, int r1, int g1, int b1) {
+  public void deleteTransformation(String name, int t1) {
     Iterator<Transformation> iter = transforms.iterator();
     while (iter.hasNext()) {
       Transformation t = iter.next();
-      if (t.getName().equals(name) && t.getT1() == t1 && t.getPosition1().getX() == x1
-              && t.getPosition1().getY() == y1 && t.getDimn1().getWidth() == w1
-              && t.getDimn1().getHeight() == h1 && t.getColor1().getRed() == r1
-              && t.getColor1().getGreen() == g1 && t.getColor1().getBlue() == b1) {
+      if (t.getName().equals(name) && t.getT1() == t1) {
         iter.remove();
       }
     }

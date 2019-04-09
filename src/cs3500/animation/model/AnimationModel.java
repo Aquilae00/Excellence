@@ -30,16 +30,8 @@ public interface AnimationModel extends IReadOnlyModel {
    *
    * @param name the name of shape
    * @param t1   the tick
-   * @param x1   the initial position x
-   * @param y1   the initial position y
-   * @param w1   the initial width
-   * @param h1   the initial height
-   * @param r1   the initial red color
-   * @param g1   the initial green color
-   * @param b1   the initial blue color
    */
-  void deleteTransformation(String name, int t1, double x1, double y1,
-                            int w1, int h1, int r1, int g1, int b1);
+  void deleteTransformation(String name, int t1);
 
   /**
    * It creates the transformation with the given component and add it to list of transformation.

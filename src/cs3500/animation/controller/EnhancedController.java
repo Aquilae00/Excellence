@@ -30,16 +30,20 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         if (evv.getVisualPanel().getTick() == 0) {
           evv.startTimer();
           evv.setLabelSpeed();
+          evv.setVisualText("Played");
         }
         break;
       case "Resume":
         evv.startTimer();
+        evv.setVisualText("Resumed");
         break;
       case "Pause":
         this.evv.stopTimer();
+        evv.setVisualText("Paused");
         break;
       case "Restart":
         evv.restartTimer();
+        evv.setVisualText("Restarting");
         break;
       case "Delete":
         String command0 = evv.getDeleteShapeCommand();
@@ -52,13 +56,16 @@ public class EnhancedController implements EnhancedIController, ActionListener {
       case "+1 speed":
         evv.increaseSpeed();
         evv.setLabelSpeed();
+        evv.setVisualText("+1 speed");
         break;
       case "-1 speed":
         evv.decreaseSpeed();
         evv.setLabelSpeed();
+        evv.setVisualText("-1 speed");
         break;
       case "Toggle Loop Off":
         evv.toggleLoop();
+        evv.setVisualText("Loop is Off");
         break;
       case "Create":
         try {
@@ -67,6 +74,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         } catch (NoSuchElementException n) {
           throw new IllegalArgumentException("Input cannot be empty");
         } catch (IllegalArgumentException i) {
+          evv.setVisualText("Illegal Type");
           throw new IllegalArgumentException(i);
         }
         break;
@@ -77,19 +85,19 @@ public class EnhancedController implements EnhancedIController, ActionListener {
         } catch (Exception ee) {
           ee.printStackTrace();
         }
-        evv.retweenPanel();
         evv.insertTransformation();
-
         evv.clearMenuTrans();
         break;
       case "delT":
         String command3 = evv.getTransformationCommand();
         try {
           processDeleteTButtonCommand(command3);
-        } catch (Exception ee) {
-          ee.printStackTrace();
+          evv.removeTransformation();
+        } catch (IllegalArgumentException n) {
+          evv.setVisualText("Invalid KeyFrame tick");
+          throw new IllegalArgumentException(n);
         }
-        evv.removeTransformation();
+
         evv.clearMenuTrans();
         break;
       default:
@@ -97,10 +105,17 @@ public class EnhancedController implements EnhancedIController, ActionListener {
     }
   }
 
+  /**
+   * Process the given command string and create shape after scanned command input.
+   *
+   * @param command the given string command
+   */
   private void processCreateShapeButtonCommand(String command) {
-    StringBuilder output = new StringBuilder();
     Scanner s = new Scanner(command);
-    evv.createShape(s.next(), s.next());
+    String name = s.next();
+    String type = s.next();
+    evv.createShape(name, type);
+    evv.setVisualText("Created " + name + " " + type);
   }
 
   /**
@@ -110,7 +125,9 @@ public class EnhancedController implements EnhancedIController, ActionListener {
    */
   private void processDeleteShapeButtonCommand(String command) {
     Scanner s = new Scanner(command);
-    evv.deleteShape(s.next());
+    String name = s.next();
+    evv.deleteShape(name);
+    evv.setVisualText("Deleted " + name);
   }
 
   /**
@@ -119,7 +136,6 @@ public class EnhancedController implements EnhancedIController, ActionListener {
    * @param command the input command
    */
   private void processCreateTButtonCommand(String command) {
-    StringBuilder output = new StringBuilder();
     Scanner s = new Scanner(command);
     evv.getModel().insertTransformation(s.next(),
             Integer.parseInt(s.next())
@@ -129,6 +145,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
             Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();
     evv.getVisualPanel().revalidate();
+    evv.setVisualText("Added Key Frame");
   }
 
   /**
@@ -137,16 +154,11 @@ public class EnhancedController implements EnhancedIController, ActionListener {
    * @param command the input command
    */
   private void processDeleteTButtonCommand(String command) {
-    StringBuilder output = new StringBuilder();
     Scanner s = new Scanner(command);
-    evv.getModel().deleteTransformation(s.next(),
-            Integer.parseInt(s.next())
-            , Double.parseDouble(s.next()), Double.parseDouble(s.next()),
-            Integer.parseInt(s.next()),
-            Integer.parseInt(s.next()), Integer.parseInt(s.next()), Integer.parseInt(s.next()),
-            Integer.parseInt(s.next()));
+    evv.getModel().deleteTransformation(s.next(), Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();
     evv.getVisualPanel().revalidate();
+    evv.setVisualText("Deleted Key Frame");
   }
 
 

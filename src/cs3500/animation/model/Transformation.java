@@ -66,9 +66,9 @@ public class Transformation {
    * @param g2   final green color
    * @param b2   final blue color
    */
-  Transformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1,
-                 int t2,
-                 double x2, double y2, int w2, int h2, int r2, int g2, int b2) {
+  public Transformation(String name, int t1, double x1, double y1, int w1, int h1, int r1, int g1, int b1,
+                        int t2,
+                        double x2, double y2, int w2, int h2, int r2, int g2, int b2) {
     this.name = name;
     this.t1 = t1;
     this.posn1 = new Position2D((int) x1, (int) y1);
