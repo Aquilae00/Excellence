@@ -18,13 +18,14 @@ public class AnimationModelImpl implements AnimationModel {
   private Dimension2D boundingDimension;
   private Map<String, String> shapes;
   private ArrayList<Transformation> transforms;
-
+  private Builder bb;
   /**
    * The animationmodelimpl that is constructed with builder.
    *
    * @param b the given builder
    */
   public AnimationModelImpl(Builder b) {
+    this.bb = b;
     this.shapes = b.shapes;
     this.leftTopMostPosn = new Position2D(b.x, b.y);
     this.boundingDimension = new Dimension2D(b.width, b.height);
@@ -114,6 +115,23 @@ public class AnimationModelImpl implements AnimationModel {
     }
   }
 
+  @Override
+  public void removeShape(String name) {
+    ArrayList<Transformation> transformations = getTransformations();
+    Iterator<Transformation> iter = transformations.iterator();
+    while (iter.hasNext()) {
+      Transformation t = iter.next();
+      if (t.getName().equals(name)) {
+        iter.remove();
+      }
+    }
+    getShapes().remove(name);
+  }
+
+  @Override
+  public AnimationModelImpl.Builder getBuilder() {
+    return bb;
+  }
 
   /**
    * The builder that builds up the animation using methods provided by the AnimationBuilder

@@ -48,4 +48,18 @@ public interface AnimationModel extends IReadOnlyModel {
    */
   void insertTransformation(String name, int t1, double x1, double y1,
                             int w1, int h1, int r1, int g1, int b1);
+
+  /**
+   * It deletes the shape with the given name.
+   *
+   * @param name name of the shape
+   */
+  void removeShape(String name);
+
+  /**
+   * It allows to get access to the builder within the model.
+   *
+   * @return builder within the model
+   */
+  AnimationModelImpl.Builder getBuilder();
 }
