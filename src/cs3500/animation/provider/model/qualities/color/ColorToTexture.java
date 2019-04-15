@@ -4,6 +4,9 @@ import java.awt.*;
 
 import cs3500.animation.provider.model.qualities.Quality;
 
+/**
+ *
+ */
 public class ColorToTexture implements Texture {
   Color c;
 

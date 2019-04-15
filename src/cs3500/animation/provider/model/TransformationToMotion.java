@@ -6,13 +6,20 @@ import cs3500.animation.model.Transformation;
 import cs3500.animation.provider.model.qualities.color.ColorToTexture;
 import cs3500.animation.provider.model.qualities.color.Texture;
 
+/**
+ * An adapter class that adapts Transformation class to Motion Interface. This class uses
+ * two keyframes, which have been initialized by passing in Transformation. Using
+ * the Keyframe interface from the provider to call the methods provided in the interface.
+ */
 public class TransformationToMotion implements Motion {
   Keyframe keyframe1;
   Keyframe keyframe2;
 
   /**
-   * Transformation to motion adapter. Takes in a transformation for composition.
-   * @param
+   * Transformation to motion adapter. Takes in two Keyframe, which act as start point keyframe
+   * and end point keyframe.
+   * @param k1 start point KeyFrame
+   * @param k2 end point KeyFrame
    */
   public TransformationToMotion(Keyframe k1,Keyframe k2) {
     this.keyframe1 = k1;
@@ -72,13 +79,13 @@ public class TransformationToMotion implements Motion {
   @Override
   public void setStartFrame(double x, double y, double w, double h, double r, double g, double b) {
     Transformation t = new Transformation("hold",keyframe1.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
-    keyframe1 = new TransformationToKeyframe(t,new ColorToTexture(new Color((int)r,(int)g,(int)b)));
+    keyframe1 = new TransformationToKeyframe(t);
   }
 
   @Override
   public void setEndFrame(double x, double y, double w, double h, double r, double g, double b) {
     Transformation t = new Transformation("hold",keyframe1.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
-    keyframe2 = new TransformationToKeyframe(t,new ColorToTexture(new Color((int)r,(int)g,(int)b)));
+    keyframe2 = new TransformationToKeyframe(t);
   }
 
   @Override

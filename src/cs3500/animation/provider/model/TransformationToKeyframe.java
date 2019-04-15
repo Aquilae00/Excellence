@@ -2,16 +2,26 @@ package cs3500.animation.provider.model;
 
 
 import cs3500.animation.model.Transformation;
+import cs3500.animation.provider.model.qualities.color.ColorToTexture;
 import cs3500.animation.provider.model.qualities.color.Texture;
 import cs3500.animation.provider.model.qualities.dimensions.Size;
 import cs3500.animation.provider.model.qualities.positions.Position;
 
+/**
+ * Adapter class that adapts Transformation to the provider Keyframe interface. To make
+ * a class implementation of Keyframe using our Transformation class that has been written.
+ */
 public class TransformationToKeyframe implements Keyframe {
   Transformation transformation;
   Texture t;
 
-  public TransformationToKeyframe(Transformation t, Texture text) {
+  /**
+   * Constructor for TransformationToKeyframe adapter that takes in Transformation and Texture.
+   * @param t a Transformation instance
+   */
+  public TransformationToKeyframe(Transformation t) {
     this.transformation = t;
+    this.t = new ColorToTexture(t.getColor1());
   }
   @Override
   public String toFile() {

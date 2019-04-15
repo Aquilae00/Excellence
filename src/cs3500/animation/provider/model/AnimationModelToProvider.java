@@ -10,9 +10,18 @@ import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.provider.model.Animation;
 import cs3500.animation.model.AnimationModel;
 
+/**
+ * Adapter class that adapts our AnimationModel to the provider's Animation class.
+ * Has an instance of AnimationModel for the use of composition.
+ */
 public class AnimationModelToProvider implements Animation {
   AnimationModel am;
 
+  /**
+   * The AnimationModelToProvider adapter constructor that takes in an AnimationModel and
+   * initialize the field in this class.
+   * @param am an AnimationModel instance
+   */
   public AnimationModelToProvider(AnimationModel am) {
     this.am = am;
   }
@@ -93,7 +102,7 @@ public class AnimationModelToProvider implements Animation {
     Map<String, String> shapes = am.getShapes();
     Map<String, Shape> newShapes = new LinkedHashMap<String,Shape>();
     for (String name : shapes.keySet()) {
-      Shape s = new ShapeAdapter(name,shapes.get(name));
+      Shape s = new ShapeAdapter(name,shapes.get(name),am.getTransformations());
       newShapes.put(name,s);
     }
     return newShapes;
