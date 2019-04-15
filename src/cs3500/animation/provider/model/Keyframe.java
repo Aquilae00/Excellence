@@ -1,9 +1,7 @@
 package cs3500.animation.provider.model;
-
-import cs3500.animator.model.qualities.color.Texture;
-import cs3500.animator.model.qualities.dimensions.Size;
-import cs3500.animator.model.qualities.positions.Position;
-
+import cs3500.animation.provider.model.qualities.dimensions.Size;
+import cs3500.animation.provider.model.qualities.positions.Position;
+import cs3500.animation.provider.model.qualities.color.Texture;
 /**
  * This interface represents a collection of qualities that some shape could display at one tick.
  */
