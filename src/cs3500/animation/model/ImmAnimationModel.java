@@ -8,7 +8,7 @@ import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.model.position.Position2D;
 
 /**
- * The animation m odel that will not change.
+ * The animation model that will not change.
  */
 public final class ImmAnimationModel implements IReadOnlyModel {
   private IReadOnlyModel am;

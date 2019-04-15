@@ -1,5 +1,6 @@
 package cs3500.animation.provider.model;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,11 +58,11 @@ public class AnimationModelToProvider implements Animation {
             (int)w1, (int)h1, (int)r1, (int)g1, (int)b1);
   }
 
-  @Override
-  public String toFile() {
-    //TODO
-
-  }
+//  @Override
+//  public String toFile() {
+//    //TODO
+//
+//  }
 
   @Override
   public int totalDuration() {
@@ -71,15 +72,17 @@ public class AnimationModelToProvider implements Animation {
   @Override
   public Map<String, Shape> getShapes() {
     Map<String, String> shapes = am.getShapes();
-    Map<String, Shape> shapes2;
-
-    return am.getShapes();
+    Map<String, Shape> newShapes = new LinkedHashMap<String,Shape>();
+    for (String name : shapes.keySet()) {
+      Shape s = new ShapeAdapter(name,shapes.get(name));
+      newShapes.put(name,s);
+    }
+    return newShapes;
   }
-
-  @Override
-  public AnimationBuilder<Animation> getBuilder() {
-    return am.getBuilder();
-  }
+//  @Override
+//  public AnimationBuilder<Animation> getBuilder() {
+//    return am.getBuilder();
+//  }
 
   @Override
   public void setBounds(int x, int y, int width, int height) {

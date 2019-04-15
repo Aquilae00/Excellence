@@ -6,11 +6,14 @@ import java.io.FileReader;
 import cs3500.animation.controller.Controller;
 import cs3500.animation.controller.EnhancedController;
 import cs3500.animation.controller.IController;
+import cs3500.animation.controller.ProviderController;
+import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.AnimationModelImpl.Builder;
 import cs3500.animation.model.IReadOnlyModel;
 import cs3500.animation.model.animator.util.AnimationReader;
+import cs3500.animation.provider.model.AnimationModelToProvider;
 import cs3500.animation.provider.view.EditorView;
-import cs3500.animator.view.EditorViewImpl;
+import cs3500.animation.provider.view.EditorViewImpl;
 import cs3500.animation.view.EnhancedVisualView;
 import cs3500.animation.view.IView;
 import cs3500.animation.view.SVGView;
@@ -82,6 +85,7 @@ public final class Excellence {
         break;
       case "provider":
         EditorView ed = new EditorViewImpl();
+        controller = new ProviderController(ed,new AnimationModelToProvider((AnimationModel) model));
       default:
         break;
     }

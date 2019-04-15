@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import cs3500.animation.provider.view.EditorView;
 import cs3500.animation.view.EnhancedVisualView;
 
 /**
