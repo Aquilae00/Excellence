@@ -1,5 +1,6 @@
 package cs3500.animation.provider.model;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +67,25 @@ public class AnimationModelToProvider implements Animation {
 
   @Override
   public int totalDuration() {
-    return 0;
+    List<Shape> shapeLists = new ArrayList();
+
+    for(Shape sh : getShapes().values()) {
+      shapeLists.add(sh);
+    }
+    int lowest = 99999;
+    int highest = 0;
+    for(Shape sh: shapeLists) {
+      for(Motion m: sh.getMotions()) {
+        // if each
+        if(m.getEndFrame().getTick() > highest) {
+          highest = m.getEndFrame().getTick();
+        }
+        if(m.getFirstTick() < lowest) {
+          lowest = m.getFirstTick();
+        }
+      }
+    }
+    return highest - lowest;
   }
 
   @Override
@@ -79,6 +98,7 @@ public class AnimationModelToProvider implements Animation {
     }
     return newShapes;
   }
+
 //  @Override
 //  public AnimationBuilder<Animation> getBuilder() {
 //    return am.getBuilder();
@@ -91,17 +111,17 @@ public class AnimationModelToProvider implements Animation {
 
   @Override
   public int getCanvasWidth() {
-    return 0;
+    return am.getBoundingDimension().getWidth();
   }
 
   @Override
   public int getCanvasHeight() {
-    return 0;
+    return am.getBoundingDimension().getHeight();
   }
 
   @Override
   public List<String> getShapeNames() {
-    List<String> ls;
-    return null;
+    List<String> ls = new ArrayList<>(am.getShapes().keySet());
+    return ls;
   }
 }
