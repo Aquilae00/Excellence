@@ -1,22 +1,16 @@
 package cs3500.animation.provider.model;
 
-import java.awt.*;
-
 import cs3500.animation.model.Transformation;
-import cs3500.animation.provider.model.qualities.color.ColorToTexture;
-import cs3500.animation.provider.model.qualities.color.Texture;
 
 public class TransformationToMotion implements Motion {
-  Keyframe keyframe1;
-  Keyframe keyframe2;
+  Transformation transformation;
 
   /**
    * Transformation to motion adapter. Takes in a transformation for composition.
-   * @param
+   * @param t
    */
-  public TransformationToMotion(Keyframe k1,Keyframe k2) {
-    this.keyframe1 = k1;
-    this.keyframe2 = k2;
+  public TransformationToMotion(Transformation t) {
+    this.transformation = t;
   }
 
   @Override
@@ -26,63 +20,61 @@ public class TransformationToMotion implements Motion {
 
   @Override
   public Keyframe getStartFrame() {
-    return keyframe1;
+    return null;
   }
 
   @Override
   public Keyframe getEndFrame() {
-    return keyframe2;
+    return null;
   }
 
   @Override
   public double getFirstX() {
-    return keyframe1.getFirstX();
+    return 0;
   }
 
   @Override
   public double getFirstY() {
-    return keyframe1.getFirstY();
+    return 0;
   }
 
   @Override
   public double getFirstWidth() {
-    return keyframe1.getFirstWidth();
+    return 0;
   }
 
   @Override
   public double getFirstHeight() {
-    return keyframe1.getFirstHeight();
+    return 0;
   }
 
   @Override
   public String getFirstColors() {
-    return keyframe1.getFirstColors();
+    return null;
   }
 
   @Override
   public int getFirstTick() {
-    return keyframe1.getTick();
+    return 0;
   }
 
   @Override
   public void setStartFrame(Keyframe keyframe) {
-    this.keyframe1 = keyframe;
+
   }
 
   @Override
   public void setStartFrame(double x, double y, double w, double h, double r, double g, double b) {
-    Transformation t = new Transformation("hold",keyframe1.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
-    keyframe1 = new TransformationToKeyframe(t,new ColorToTexture(new Color((int)r,(int)g,(int)b)));
+
   }
 
   @Override
   public void setEndFrame(double x, double y, double w, double h, double r, double g, double b) {
-    Transformation t = new Transformation("hold",keyframe1.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
-    keyframe2 = new TransformationToKeyframe(t,new ColorToTexture(new Color((int)r,(int)g,(int)b)));
+
   }
 
   @Override
   public void setEndFrame(Keyframe keyframe) {
-    this.keyframe2 = keyframe;
+
   }
 }

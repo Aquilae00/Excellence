@@ -1,6 +1,6 @@
-package cs3500.animation.provider.model.qualities.dimensions;
+package cs3500.animator.model.qualities.dimensions;
 
-import cs3500.animation.provider.model.qualities.Quality;
+import cs3500.animator.model.qualities.Quality;
 
 /**
  * Represents ways to described an shape size with dimensions.

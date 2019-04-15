@@ -1,7 +1,7 @@
-package cs3500.animation.provider.model.qualities.positions;
+package cs3500.animator.model.qualities.positions;
 
 
-import cs3500.animation.provider.model.qualities.Quality;
+import cs3500.animator.model.qualities.Quality;
 
 /**
  * Describes the position of an object in different dimensions.

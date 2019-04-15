@@ -1,7 +1,6 @@
-package cs3500.animation.provider.model.qualities.color;
+package cs3500.animator.model.qualities.color;
 
-
-import cs3500.animation.provider.model.qualities.Quality;
+import cs3500.animator.model.qualities.Quality;
 
 /**
  * Represents java.awt.Texture as modifiable quality by the cs3500.animator.model animations.

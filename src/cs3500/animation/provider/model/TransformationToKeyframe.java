@@ -1,16 +1,14 @@
 package cs3500.animation.provider.model;
 
-
 import cs3500.animation.model.Transformation;
-import cs3500.animation.provider.model.qualities.color.Texture;
-import cs3500.animation.provider.model.qualities.dimensions.Size;
-import cs3500.animation.provider.model.qualities.positions.Position;
+import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.dimensions.Size;
+import cs3500.animator.model.qualities.positions.Position;
 
 public class TransformationToKeyframe implements Keyframe {
   Transformation transformation;
-  Texture t;
 
-  public TransformationToKeyframe(Transformation t, Texture text) {
+  public TransformationToKeyframe(Transformation t) {
     this.transformation = t;
   }
   @Override
@@ -50,7 +48,7 @@ public class TransformationToKeyframe implements Keyframe {
 
   @Override
   public Texture getTexture() {
-    return this.t;
+    return null;
   }
 
   @Override

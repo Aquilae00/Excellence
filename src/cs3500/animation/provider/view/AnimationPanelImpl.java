@@ -2,8 +2,7 @@ package cs3500.animation.provider.view;
 
 import cs3500.animation.provider.model.Animation;
 import cs3500.animation.provider.model.Shape;
-import cs3500.animation.provider.model.qualities.color.Texture;
-
+import cs3500.animator.model.qualities.color.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -61,10 +60,10 @@ public class AnimationPanelImpl extends JPanel implements AnimationPanel {
         int w = (int) s.getSizeAt(currentTick).getWidth();
         int h = (int) s.getSizeAt(currentTick).getHeight();
         if (keyframes.contains(this.currentTick)) {
-//          System.out.println(s.getName() + " visible at tick " + this.currentTick + " "
-//              + s.getPositionAt(currentTick).toFile() + " "
-////              + s.getSizeAt(currentTick).toFile() + " "
-//              + s.getColorAt(currentTick).toFile());
+          System.out.println(s.getName() + " visible at tick " + this.currentTick + " "
+              + s.getPositionAt(currentTick).toFile() + " "
+              + s.getSizeAt(currentTick).toFile() + " "
+              + s.getColorAt(currentTick).toFile());
         }
 
         g2d.setColor(color);

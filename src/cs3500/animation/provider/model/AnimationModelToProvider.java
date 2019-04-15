@@ -85,6 +85,7 @@ public class AnimationModelToProvider implements Animation {
         }
       }
     }
+
     return highest - lowest;
   }
 
@@ -98,7 +99,6 @@ public class AnimationModelToProvider implements Animation {
     }
     return newShapes;
   }
-
 //  @Override
 //  public AnimationBuilder<Animation> getBuilder() {
 //    return am.getBuilder();
@@ -121,7 +121,10 @@ public class AnimationModelToProvider implements Animation {
 
   @Override
   public List<String> getShapeNames() {
-    List<String> ls = new ArrayList<>(am.getShapes().keySet());
+    List<String> ls = new ArrayList();
+    for(String name: am.getShapes().keySet()) {
+      ls.add(name);
+    }
     return ls;
   }
 }

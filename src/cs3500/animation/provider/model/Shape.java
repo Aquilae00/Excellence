@@ -1,10 +1,9 @@
 package cs3500.animation.provider.model;
+
+import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.dimensions.Size;
+import cs3500.animator.model.qualities.positions.Position;
 import java.util.List;
-
-import cs3500.animation.provider.model.qualities.color.Texture;
-import cs3500.animation.provider.model.qualities.dimensions.Size;
-import cs3500.animation.provider.model.qualities.positions.Position;
-
 
 /**
  * This class represents a shape, and every motion it will go through is stored within.

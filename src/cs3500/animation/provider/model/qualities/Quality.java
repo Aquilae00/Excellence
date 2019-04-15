@@ -1,4 +1,4 @@
-package cs3500.animation.provider.model.qualities;
+package cs3500.animator.model.qualities;
 
 /**
  * Represents a characteristic that can describe an animated object.
