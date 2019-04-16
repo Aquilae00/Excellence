@@ -70,6 +70,6 @@ public class ColorToTexture implements Texture {
 
   @Override
   public String toFile() {
-    return null;
+    return this.c.getRed() + " " + this.c.getGreen() + " " + this.c.getBlue();
   }
 }

@@ -55,6 +55,6 @@ public class Dimension2DToSize implements Size {
 
   @Override
   public String toFile() {
-    return null;
+    return this.d.getWidth() + " " + this.d.getHeight();
   }
 }

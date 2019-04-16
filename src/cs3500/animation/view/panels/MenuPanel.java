@@ -36,7 +36,6 @@ public class MenuPanel extends JPanel {
   private JTextField blue;
   private JButton createTrans;
   private JButton deleteTrans;
-  private Map<String, String> set;
 
   /**
    * Menupanel that is constructed with map of string.
@@ -59,7 +58,6 @@ public class MenuPanel extends JPanel {
     JLabel labelRed;
     JLabel labelGreen;
     JLabel labelBlue;
-    this.set = set;
 
     borderDim = new Dimension(200, 200);
     this.setPreferredSize(borderDim);
@@ -79,7 +77,7 @@ public class MenuPanel extends JPanel {
 
     //list the shape names
     shapes = new DefaultListModel<String>();
-    for (String s : this.set.keySet()) {
+    for (String s : set.keySet()) {
       shapes.addElement(s);
     }
     los = new JList(shapes);

@@ -60,6 +60,6 @@ public class Position2DToPosition implements Position {
 
   @Override
   public String toFile() {
-    return null;
+    return this.pos.getX() + " " + this.pos.getY();
   }
 }
