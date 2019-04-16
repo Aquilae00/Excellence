@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import cs3500.animation.model.AnimationModelImpl;
-import cs3500.animation.model.IReadOnlyModel;
-import cs3500.animation.provider.model.Animation;
+import cs3500.animation.model.Tweening;
 import cs3500.animation.model.AnimationModel;
 
 /**
@@ -15,7 +12,7 @@ import cs3500.animation.model.AnimationModel;
  * Has an instance of AnimationModel for the use of composition.
  */
 public class AnimationModelToProvider implements Animation {
-  AnimationModel am;
+  private AnimationModel am;
 
   /**
    * The AnimationModelToProvider adapter constructor that takes in an AnimationModel and
@@ -68,11 +65,10 @@ public class AnimationModelToProvider implements Animation {
             (int)w1, (int)h1, (int)r1, (int)g1, (int)b1);
   }
 
-//  @Override
-//  public String toFile() {
-//    //TODO
-//
-//  }
+  @Override
+  public String toFile() {
+    return am.getAnimationState();
+  }
 
   @Override
   public int totalDuration() {
@@ -102,16 +98,16 @@ public class AnimationModelToProvider implements Animation {
     Map<String, String> shapes = am.getShapes();
     Map<String, Shape> newShapes = new LinkedHashMap<String,Shape>();
     for (String name : shapes.keySet()) {
-      Shape s = new ShapeAdapter(name,shapes.get(name),am.getTransformations());
+      Shape s = new ShapeAdapter(name,shapes.get(name),new Tweening().apply(am.getTransformations()));
       newShapes.put(name,s);
     }
     return newShapes;
   }
 
-//  @Override
-//  public AnimationBuilder<Animation> getBuilder() {
-//    return am.getBuilder();
-//  }
+  @Override
+  public AnimationBuilder<Animation> getBuilder() {
+    return null;
+  }
 
   @Override
   public void setBounds(int x, int y, int width, int height) {

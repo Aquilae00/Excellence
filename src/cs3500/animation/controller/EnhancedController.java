@@ -156,7 +156,7 @@ public class EnhancedController implements EnhancedIController, ActionListener {
    */
   private void processDeleteTButtonCommand(String command) {
     Scanner s = new Scanner(command);
-    evv.getModel().deleteTransformation(s.next(), Integer.parseInt(s.next()));
+//    evv.getModel().deleteTransformation(s.next(), Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();
     evv.getVisualPanel().revalidate();
     evv.setVisualText("Deleted Key Frame");

@@ -51,9 +51,7 @@ public class AnimationPanelImpl extends JPanel implements AnimationPanel {
         keyframes.add(s.getMotions().get(j).getStartFrame().getTick());
         keyframes.add(s.getMotions().get(j).getEndFrame().getTick());
       }
-
       if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
-
         Texture t = s.getColorAt(currentTick);
         Color color = new Color((int) t.getRed(), (int) t.getGreen(), (int) t.getBlue());
         int x = (int) s.getPositionAt(currentTick).getX();
@@ -61,10 +59,10 @@ public class AnimationPanelImpl extends JPanel implements AnimationPanel {
         int w = (int) s.getSizeAt(currentTick).getWidth();
         int h = (int) s.getSizeAt(currentTick).getHeight();
         if (keyframes.contains(this.currentTick)) {
-//          System.out.println(s.getName() + " visible at tick " + this.currentTick + " "
-//              + s.getPositionAt(currentTick).toFile() + " "
-////              + s.getSizeAt(currentTick).toFile() + " "
-//              + s.getColorAt(currentTick).toFile());
+          System.out.println(s.getName() + " visible at tick " + this.currentTick + " "
+              + s.getPositionAt(currentTick).toFile() + " "
+              + s.getSizeAt(currentTick).toFile() + " "
+              + s.getColorAt(currentTick).toFile());
         }
 
         g2d.setColor(color);

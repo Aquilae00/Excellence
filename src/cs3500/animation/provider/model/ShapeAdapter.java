@@ -1,14 +1,9 @@
 package cs3500.animation.provider.model;
 
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import cs3500.animation.model.Transformation;
-import cs3500.animation.model.position.Position2D;
 import cs3500.animation.provider.model.qualities.color.ColorToTexture;
 import cs3500.animation.provider.model.qualities.color.Texture;
 import cs3500.animation.provider.model.qualities.dimensions.Dimension2DToSize;
@@ -22,21 +17,28 @@ import cs3500.animation.provider.model.qualities.positions.Position2DToPosition;
  * representation.
  */
 public class ShapeAdapter implements Shape {
-  String name;
-  String type;
-  ArrayList<Motion> m;
-  ArrayList<Transformation> transformations;
+  private String name;
+  private String type;
+  private ArrayList<Motion> m;
+  private ArrayList<Transformation> transformations;
 
 
+  /**
+   * Adapter constructor that constructs a Shape given name, type, and list of Transformation.
+   * Initializes the motion using the list of Transformation.
+   * @param name given string name
+   * @param type given string type
+   * @param t given array list of Transformation
+   */
   public ShapeAdapter(String name, String type, ArrayList<Transformation> t){
     this.name = name;
     this.type = type;
-    this.transformations = t;
-    this.m = convertTToMotion();
+    this.transformations = convertTransformationName(t);
+    this.m = new ArrayList<>();
+    this.convertTToMotion();
   }
 
-  private ArrayList<Motion> convertTToMotion() {
-    ArrayList<Motion> mot = new ArrayList<>();
+  private void convertTToMotion() {
     for (Transformation t : transformations) {
       Transformation t1 = new Transformation(t.getName(),t.getT1(),t.getPosition1().getX(),
               t.getPosition1().getY(),t.getDimn1().getWidth(),t.getDimn1().getHeight(),
@@ -44,10 +46,19 @@ public class ShapeAdapter implements Shape {
       Transformation t2 = new Transformation(t.getName(),t.getT2(),t.getPosition2().getX(),
               t.getPosition2().getY(),t.getDimn2().getWidth(),t.getDimn2().getHeight(),
               t.getColor2().getRed(),t.getColor2().getGreen(),t.getColor2().getBlue());
-      mot.add(new TransformationToMotion(new TransformationToKeyframe(t1),
+      m.add(new TransformationToMotion(new TransformationToKeyframe(t1),
               new TransformationToKeyframe(t2)));
     }
-    return mot;
+  }
+
+  private ArrayList<Transformation> convertTransformationName(ArrayList<Transformation> t) {
+    ArrayList<Transformation> temp = new ArrayList<>();
+    for(Transformation trans : t) {
+      if (trans.getName().equals(name)) {
+        temp.add(trans);
+      }
+    }
+    return temp;
   }
 
 
@@ -133,7 +144,7 @@ public class ShapeAdapter implements Shape {
     Texture text = null;
     for (Transformation t : transformations) {
       if (t.getT1() == currentTick) {
-        text = new ColorToTexture(new Color(t.getColor1().getRed(),t.getColor1().getGreen(),t.getColor1().getBlue()));
+        text = new ColorToTexture(t.getColor1());
       }
     }
     return text;

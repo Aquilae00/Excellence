@@ -1,10 +1,6 @@
 package cs3500.animation.provider.model;
 
-import java.awt.*;
-
 import cs3500.animation.model.Transformation;
-import cs3500.animation.provider.model.qualities.color.ColorToTexture;
-import cs3500.animation.provider.model.qualities.color.Texture;
 
 /**
  * An adapter class that adapts Transformation class to Motion Interface. This class uses
@@ -12,8 +8,8 @@ import cs3500.animation.provider.model.qualities.color.Texture;
  * the Keyframe interface from the provider to call the methods provided in the interface.
  */
 public class TransformationToMotion implements Motion {
-  Keyframe keyframe1;
-  Keyframe keyframe2;
+  private Keyframe keyframe1;
+  private Keyframe keyframe2;
 
   /**
    * Transformation to motion adapter. Takes in two Keyframe, which act as start point keyframe
@@ -84,7 +80,7 @@ public class TransformationToMotion implements Motion {
 
   @Override
   public void setEndFrame(double x, double y, double w, double h, double r, double g, double b) {
-    Transformation t = new Transformation("hold",keyframe1.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
+    Transformation t = new Transformation("hold",keyframe2.getTick(),x,y,(int)w,(int)h,(int)r,(int)g,(int)b);
     keyframe2 = new TransformationToKeyframe(t);
   }
 

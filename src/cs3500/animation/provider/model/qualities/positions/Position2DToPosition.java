@@ -3,8 +3,12 @@ package cs3500.animation.provider.model.qualities.positions;
 import cs3500.animation.model.position.Position2D;
 import cs3500.animation.provider.model.qualities.Quality;
 
+/**
+ * Adapter class that adapts Position2D to the provider Position class. Some methods are not
+ * implemented fully, as they are irrelevant to make the view work.
+ */
 public class Position2DToPosition implements Position {
-  Position2D pos;
+  private Position2D pos;
 
   /**
    * Adapter constructor for Position2D to Position interface. Takes in Position2D.

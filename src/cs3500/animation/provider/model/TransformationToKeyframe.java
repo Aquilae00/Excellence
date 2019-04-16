@@ -12,8 +12,8 @@ import cs3500.animation.provider.model.qualities.positions.Position;
  * a class implementation of Keyframe using our Transformation class that has been written.
  */
 public class TransformationToKeyframe implements Keyframe {
-  Transformation transformation;
-  Texture t;
+  private Transformation transformation;
+  private Texture t;
 
   /**
    * Constructor for TransformationToKeyframe adapter that takes in Transformation and Texture.

@@ -5,10 +5,10 @@ import java.awt.*;
 import cs3500.animation.provider.model.qualities.Quality;
 
 /**
- *
+ * Adapter class that adapts the Color class to the provider Texture class.
  */
 public class ColorToTexture implements Texture {
-  Color c;
+  private Color c;
 
   /**
    * Constructor adaptor for Color to Texture. Takes in a Color that initialize this color.

@@ -3,9 +3,17 @@ package cs3500.animation.provider.model.qualities.dimensions;
 import cs3500.animation.model.dimension.Dimension2D;
 import cs3500.animation.provider.model.qualities.Quality;
 
+/**
+ * Adapter class that adapts the Dimension2D class to the provider Size class. Some methods are not
+ * implemented fully, as they are irrelevant to make the view work.
+ */
 public class Dimension2DToSize implements Size {
-  Dimension2D d;
+  private Dimension2D d;
 
+  /**
+   * Adapter constructor for Dimension2D to Size interface. Takes in Dimension2D.
+   * @param d instance of Dimension2D
+   */
   public Dimension2DToSize(Dimension2D d) {
     this.d = d;
   }

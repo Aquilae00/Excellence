@@ -295,7 +295,8 @@ public class VisualPanel extends JPanel implements ActionListener {
       }
     }
     model.getShapes().remove(name);
-  }
+    tweened = retween();
+}
 
   /**
    * It tweens the value in between.
