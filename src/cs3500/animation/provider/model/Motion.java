@@ -5,10 +5,10 @@ package cs3500.animation.provider.model;
  */
 public interface Motion {
 
-//  /**
-//   * Returns a string representation of the animation as a file.
-//   */
-//  String toFile();
+  /**
+   * Returns a string representation of the animation as a file.
+   */
+  String toFile();
 
   /**
    * Returns the parent of the motion.

@@ -1,6 +1,6 @@
 package cs3500.animation.provider.model.qualities.color;
 
-import java.awt.*;
+import java.awt.Color;
 
 import cs3500.animation.provider.model.qualities.Quality;
 
@@ -12,6 +12,7 @@ public class ColorToTexture implements Texture {
 
   /**
    * Constructor adaptor for Color to Texture. Takes in a Color that initialize this color.
+   *
    * @param c color
    */
   public ColorToTexture(Color c) {

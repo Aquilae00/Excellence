@@ -9,9 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.Timer;
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import javax.swing.*;
 
 
 import cs3500.animation.model.IReadOnlyModel;
@@ -31,6 +29,7 @@ public class VisualPanel extends JPanel implements ActionListener {
   private ArrayList<Transformation> transformations;
   private ArrayList<Transformation> tweened;
   private Tweening tween;
+  private JSlider js;
 
   /**
    * Visual panel constructor that takes in model.
@@ -58,29 +57,41 @@ public class VisualPanel extends JPanel implements ActionListener {
   protected void paintComponent(Graphics g) {
     Graphics2D g2d = (Graphics2D) g;
     super.paintComponent(g);
+//    g2d.translate(model.getLeftTopMostPosn().getX() + model.getBoundingDimension().getWidth() / 2, model.getLeftTopMostPosn().getY() + model.getBoundingDimension().getHeight() / 2);
     for (Transformation t : this.tweened) {
+      g2d = (Graphics2D) g.create();
       if (t.getT1() == tick) {
         g2d.setColor(new Color(t.getColor1().getRed(), t.getColor1().getGreen(),
                 t.getColor1().getBlue()));
         if (model.getShapes().get(t.getName()).equals("ellipse")) {
+          g2d.rotate(Math.toRadians(t.getRad1()),t.getPosition1().getX(),t.getPosition2().getY());
           g2d.drawOval(t.getPosition1().getX(), t.getPosition1().getY(), t.getDimn1().getWidth(),
                   t.getDimn1().getHeight());
           g2d.fillOval(t.getPosition1().getX(), t.getPosition1().getY(), t.getDimn1().getWidth(),
                   t.getDimn1().getHeight());
+
         } else if (model.getShapes().get(t.getName()).equals("rectangle")) {
+          if (t.getRad1() != -1 && t.getRad2() != -1) {
+            g2d.rotate(Math.toRadians(t.getRad1()), t.getPosition1().getX()
+                    + t.getDimn1().getWidth() / 2, t.getPosition2().getY() + t.getDimn1().getHeight() / 2);
+          }
           g2d.drawRect(t.getPosition1().getX(), t.getPosition1().getY(), t.getDimn1().getWidth(),
                   t.getDimn1().getHeight());
           g2d.fillRect(t.getPosition1().getX(), t.getPosition1().getY(), t.getDimn1().getWidth(),
                   t.getDimn1().getHeight());
+
         }
       }
+      g2d.dispose();
     }
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
     tick++;
-
+    if(js != null) {
+      js.setValue(tick);
+    }
     if (loop) {
       if (tick > tweened.size() / model.getShapes().size()) {
         tick = 0;
@@ -195,15 +206,18 @@ public class VisualPanel extends JPanel implements ActionListener {
       if (temp2 != null) {
         transformations.add(new Transformation(name, temp1.getT1(), temp1.getPosition1().getX(),
                 temp1.getPosition1().getY(),
-                temp1.getDimn1().getWidth(), temp1.getDimn1().getHeight(), temp1.getColor1().getRed(),
-                temp1.getColor1().getGreen(), temp1.getColor1().getBlue(), t1, x1, y1, w1, h1, r1,
+                temp1.getDimn1().getWidth(), temp1.getDimn1().getHeight(),
+                temp1.getColor1().getRed(),
+                temp1.getColor1().getGreen(), temp1.getColor1().getBlue(),
+                t1, x1, y1, w1, h1, r1,
                 g1, b1));
         transformations.add(new Transformation(name, t1, x1, y1, w1, h1, r1, g1, b1, temp1.getT2(),
-                temp1.getPosition2().getX(), temp1.getPosition2().getY(), temp1.getDimn2().getWidth(),
-                temp1.getDimn2().getHeight(), temp1.getColor2().getRed(), temp1.getColor2().getGreen(),
+                temp1.getPosition2().getX(), temp1.getPosition2().getY(),
+                temp1.getDimn2().getWidth(),
+                temp1.getDimn2().getHeight(), temp1.getColor2().getRed(),
+                temp1.getColor2().getGreen(),
                 temp1.getColor2().getBlue()));
-      }
-      else if (temp1 != null) {
+      } else if (temp1 != null) {
         transformations.add(new Transformation(name, temp2.getT1(), temp2.getPosition1().getX(),
                 temp2.getPosition1().getY(),
                 temp2.getDimn1().getWidth(), temp2.getDimn1().getHeight(),
@@ -252,7 +266,6 @@ public class VisualPanel extends JPanel implements ActionListener {
       }
     }
     if (end != null && start != null) {
-      System.out.println("in");
       transformations.add(new Transformation(name, start.getT1(), start.getPosition1().getX(),
               start.getPosition1().getY(), start.getDimn1().getWidth(),
               start.getDimn1().getHeight()
@@ -296,7 +309,7 @@ public class VisualPanel extends JPanel implements ActionListener {
     }
     model.getShapes().remove(name);
     tweened = retween();
-}
+  }
 
   /**
    * It tweens the value in between.
@@ -315,4 +328,15 @@ public class VisualPanel extends JPanel implements ActionListener {
     return this.timer.isRunning();
   }
 
+  public int getMaxTick() {
+    return this.tweened.size() / model.getShapes().size();
+  }
+
+  public void setTick(int tick) {
+    this.tick = tick;
+  }
+
+  public void setSlider(JSlider js) {
+    this.js = js;
+  }
 }

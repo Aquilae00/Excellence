@@ -12,8 +12,8 @@ import cs3500.animation.provider.model.qualities.positions.Position;
 import cs3500.animation.provider.model.qualities.positions.Position2DToPosition;
 
 /**
- * An adapter class for Shapes. This Shape class that represents shape in Animation requires
- * new implementation of class, since our original code used Map as shapes name and type
+ * An adapter class for Shapes. This Shape class that represents shape in Animation requires new
+ * implementation of class, since our original code used Map as shapes name and type
  * representation.
  */
 public class ShapeAdapter implements Shape {
@@ -26,11 +26,12 @@ public class ShapeAdapter implements Shape {
   /**
    * Adapter constructor that constructs a Shape given name, type, and list of Transformation.
    * Initializes the motion using the list of Transformation.
+   *
    * @param name given string name
    * @param type given string type
-   * @param t given array list of Transformation
+   * @param t    given array list of Transformation
    */
-  public ShapeAdapter(String name, String type, ArrayList<Transformation> t){
+  public ShapeAdapter(String name, String type, ArrayList<Transformation> t) {
     this.name = name;
     this.type = type;
     this.transformations = convertTransformationName(t);
@@ -38,22 +39,33 @@ public class ShapeAdapter implements Shape {
     this.convertTToMotion();
   }
 
+  /**
+   * Convert the list of Transformation to the form of Motion by dividing each Transformation and
+   * adding them to a Motion in array list of Motion.
+   */
   private void convertTToMotion() {
     for (Transformation t : transformations) {
-      Transformation t1 = new Transformation(t.getName(),t.getT1(),t.getPosition1().getX(),
-              t.getPosition1().getY(),t.getDimn1().getWidth(),t.getDimn1().getHeight(),
-              t.getColor1().getRed(),t.getColor1().getGreen(),t.getColor1().getBlue());
-      Transformation t2 = new Transformation(t.getName(),t.getT2(),t.getPosition2().getX(),
-              t.getPosition2().getY(),t.getDimn2().getWidth(),t.getDimn2().getHeight(),
-              t.getColor2().getRed(),t.getColor2().getGreen(),t.getColor2().getBlue());
+      Transformation t1 = new Transformation(t.getName(), t.getT1(), t.getPosition1().getX(),
+              t.getPosition1().getY(), t.getDimn1().getWidth(), t.getDimn1().getHeight(),
+              t.getColor1().getRed(), t.getColor1().getGreen(), t.getColor1().getBlue());
+      Transformation t2 = new Transformation(t.getName(), t.getT2(), t.getPosition2().getX(),
+              t.getPosition2().getY(), t.getDimn2().getWidth(), t.getDimn2().getHeight(),
+              t.getColor2().getRed(), t.getColor2().getGreen(), t.getColor2().getBlue());
       m.add(new TransformationToMotion(new TransformationToKeyframe(t1),
               new TransformationToKeyframe(t2)));
     }
   }
 
+  /**
+   * Method that convert the given list of Transformation to a list of Transformation belonging to
+   * the shape with this name.
+   *
+   * @param t array list of Transformation
+   * @return Array list of transformation that belongs to this shape name
+   */
   private ArrayList<Transformation> convertTransformationName(ArrayList<Transformation> t) {
     ArrayList<Transformation> temp = new ArrayList<>();
-    for(Transformation trans : t) {
+    for (Transformation trans : t) {
       if (trans.getName().equals(name)) {
         temp.add(trans);
       }
@@ -86,15 +98,15 @@ public class ShapeAdapter implements Shape {
   public int totalDuration() {
     int lowest = 99999;
     int highest = 0;
-      for(Motion m: this.m) {
-        // if each
-        if(m.getEndFrame().getTick() > highest) {
-          highest = m.getEndFrame().getTick();
-        }
-        if(m.getFirstTick() < lowest) {
-          lowest = m.getFirstTick();
-        }
+    for (Motion m : this.m) {
+      // if each
+      if (m.getEndFrame().getTick() > highest) {
+        highest = m.getEndFrame().getTick();
       }
+      if (m.getFirstTick() < lowest) {
+        lowest = m.getFirstTick();
+      }
+    }
     return highest - lowest;
   }
 
@@ -126,8 +138,8 @@ public class ShapeAdapter implements Shape {
   @Override
   public int getFirstTick() {
     int beginning = 999;
-    for(Transformation t: transformations) {
-      if(t.getT1() < beginning) {
+    for (Transformation t : transformations) {
+      if (t.getT1() < beginning) {
         beginning = t.getT1();
       }
     }

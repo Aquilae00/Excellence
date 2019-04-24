@@ -12,6 +12,7 @@ public class Position2DToPosition implements Position {
 
   /**
    * Adapter constructor for Position2D to Position interface. Takes in Position2D.
+   *
    * @param pos position2D instance
    */
   public Position2DToPosition(Position2D pos) {

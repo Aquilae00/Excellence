@@ -85,7 +85,9 @@ public final class Excellence {
         break;
       case "provider":
         EditorView ed = new EditorViewImpl();
-        controller = new ProviderController(ed,new AnimationModelToProvider((AnimationModel) model));
+        controller = new ProviderController(ed,
+                new AnimationModelToProvider((AnimationModel) model));
+        break;
       default:
         break;
     }

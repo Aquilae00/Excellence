@@ -12,6 +12,7 @@ public class Dimension2DToSize implements Size {
 
   /**
    * Adapter constructor for Dimension2D to Size interface. Takes in Dimension2D.
+   *
    * @param d instance of Dimension2D
    */
   public Dimension2DToSize(Dimension2D d) {

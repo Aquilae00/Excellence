@@ -48,6 +48,9 @@ public class AnimationReader {
         case "motion":
           readMotion(s, builder);
           break;
+        case "rotation":
+          readRotation(s,builder);
+          break;
         default:
           throw new IllegalStateException("Unexpected keyword: " + word + s.nextLine());
       }
@@ -119,4 +122,29 @@ public class AnimationReader {
     }
   }
 
+  private static <Doc> void readRotation(Scanner s, AnimationBuilder<Doc> builder ) {
+    int[] vals = new int[18];
+    String name;
+    if (s.hasNext()) {
+      name = s.next();
+    } else {
+      throw new IllegalStateException("Motion: Expected a shape name, but no more input available");
+    }
+    for (int i = 0; i < 18; i++) {
+      vals[i] = getInt2(s);
+    }
+    builder.addRotation(name,
+            vals[0], vals[1], vals[2], vals[3], vals[4], vals[5], vals[6], vals[7],
+            vals[8], vals[9], vals[10], vals[11], vals[12], vals[13], vals[14], vals[15], vals[16],vals [17]);
+  }
+
+  private static <Doc> int getInt2(Scanner s) {
+    if (s.hasNextInt()) {
+      return s.nextInt();
+    } else if (s.hasNext()) {
+      throw new IllegalStateException();
+    } else {
+      throw new IllegalStateException();
+    }
+  }
 }

@@ -1,5 +1,6 @@
 package cs3500.animation.provider.view;
 
+
 import cs3500.animation.provider.model.Animation;
 import cs3500.animation.provider.model.Motion;
 import cs3500.animation.provider.model.Shape;
@@ -9,7 +10,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 import java.util.InputMismatchException;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -31,7 +34,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * This class represents a view that contains a VisualView, and can edit it.
  */
 public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView, ActionListener,
-    ListSelectionListener, View {
+        ListSelectionListener, View {
 
   private float ticksPerSecond;
   private int currentTick;
@@ -196,7 +199,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     controlKeyframeEditingPanel = new JPanel();
     controlKeyframeEditingPanel.setLayout(new FlowLayout());
     controlKeyframeEditingPanel
-        .setBorder(BorderFactory.createTitledBorder("KeyframeEditing Controls"));
+            .setBorder(BorderFactory.createTitledBorder("KeyframeEditing Controls"));
 
     JButton addFrame;
     JButton removeFrame;
@@ -270,8 +273,8 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     framePanel = new JPanel();
     framePanel.setSize(300, 300);
     framePanel.setBorder(BorderFactory.createTitledBorder(
-        "Declared Frames for " + this.currentObject.getName() + " (" + (this.currentObject
-            .getMotions().size()) + "): "));
+            "Declared Frames for " + this.currentObject.getName() + " (" + (this.currentObject
+                    .getMotions().size()) + "): "));
     framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.PAGE_AXIS));
     keyframesRadioButtons = new JRadioButton[this.model.getShapes().size()];
 
@@ -282,11 +285,11 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     addFirstKeyFrame();
     for (int i = 1; i < this.currentObject.getMotions().size(); i++) {
       Motion motion = currentObject.getMotions().get(i);
-//      System.out.println("motion " + i + " = " + motion.toFile());
+      System.out.println("motion " + i + " = " + motion.toFile());
       keyframesRadioButtons[i] = new JRadioButton(motion.getEndFrame().toFile());
       keyframesRadioButtons[i].setSelected(false);
       keyframesRadioButtons[i]
-          .setActionCommand("RBFRAME:" + this.currentObject.getMotions().get(i).getEndFrame());
+              .setActionCommand("RBFRAME:" + this.currentObject.getMotions().get(i).getEndFrame());
       keyframesRadioButtons[i].addActionListener(this);
       keyframeGroup.add(keyframesRadioButtons[i]);
       framePanel.add(keyframesRadioButtons[i]);
@@ -301,7 +304,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
       keyframesRadioButtons[0] = new JRadioButton(motion.getStartFrame().toFile());
       keyframesRadioButtons[0].setSelected(false);
       keyframesRadioButtons[0]
-          .setActionCommand("RBFRAME:" + this.currentObject.getMotions().get(0).getEndFrame());
+              .setActionCommand("RBFRAME:" + this.currentObject.getMotions().get(0).getEndFrame());
       keyframesRadioButtons[0].addActionListener(this);
       keyframeGroup.add(keyframesRadioButtons[0]);
       framePanel.add(keyframesRadioButtons[0]);
@@ -313,8 +316,9 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
    */
   private void updatePreview() {
     this.setTitle(
-        "Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ") of "
-            + this.projectURL);
+            "Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() +
+                    ") of "
+                    + this.projectURL);
     VisualView editPanel = new VisualViewImpl();
     editPanel.setTitle("Preview at tick: " + currentTick);
     editPanel.peekAtTick(this.model, this.currentTick, "");
@@ -325,7 +329,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
    */
   private void displayError(String e) {
     JOptionPane.showMessageDialog(EditorViewImpl.this, e,
-        "ERROR", JOptionPane.WARNING_MESSAGE);
+            "ERROR", JOptionPane.WARNING_MESSAGE);
   }
 
   /**
@@ -358,7 +362,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
       case "setTick":
         try {
           this.currentTick = Integer
-              .parseInt(JOptionPane.showInputDialog("Select a tick to preview:"));
+                  .parseInt(JOptionPane.showInputDialog("Select a tick to preview:"));
         } catch (InputMismatchException e) {
           displayError(e.getMessage());
         }
@@ -367,7 +371,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
       case "preview":
         try {
           this.ticksPerSecond = Integer
-              .parseInt(JOptionPane.showInputDialog("Select a ticksPerSecond "));
+                  .parseInt(JOptionPane.showInputDialog("Select a ticksPerSecond "));
           runPreview();
         } catch (InputMismatchException e) {
           displayError(e.getMessage());
@@ -375,20 +379,20 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
         break;
       case "Color chooser":
         Color col = JColorChooser.showDialog(EditorViewImpl.this, "Choose a color",
-            colorChooserDisplay.getBackground());
+                colorChooserDisplay.getBackground());
         colorChooserDisplay.setBackground(col);
         break;
       case "Open file": {
         final JFileChooser fchooser = new JFileChooser(".");
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-            "JPG & GIF Images", "jpg", "gif");
+                "JPG & GIF Images", "jpg", "gif");
         fchooser.setFileFilter(filter);
         int retvalue = fchooser.showOpenDialog(EditorViewImpl.this);
         if (retvalue == JFileChooser.APPROVE_OPTION) {
           File f = fchooser.getSelectedFile();
           fileOpenDisplay.setText(f.getAbsolutePath());
           this.projectURL = f.getAbsolutePath();
-//          loadNewFile();
+          //          loadNewFile();
         }
       }
       break;
@@ -402,24 +406,30 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
       }
       break;
       case "Message":
-        JOptionPane.showMessageDialog(EditorViewImpl.this, "This is a demo message", "Message",
-            JOptionPane.PLAIN_MESSAGE);
-        JOptionPane.showMessageDialog(EditorViewImpl.this, "You are about to be deleted.",
-            "Last Chance", JOptionPane.WARNING_MESSAGE);
-        JOptionPane.showMessageDialog(EditorViewImpl.this, "You have been deleted.", "Too late",
-            JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(EditorViewImpl.this,
+                "This is a demo message", "Message",
+                JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(EditorViewImpl.this,
+                "You are about to be deleted.",
+                "Last Chance", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(EditorViewImpl.this,
+                "You have been deleted.", "Too late",
+                JOptionPane.ERROR_MESSAGE);
         JOptionPane
-            .showMessageDialog(EditorViewImpl.this, "Please start again.", "What to do next",
-                JOptionPane.INFORMATION_MESSAGE);
+                .showMessageDialog(EditorViewImpl.this,
+                        "Please start again.", "What to do next",
+                        JOptionPane.INFORMATION_MESSAGE);
         break;
       case "Input":
         break;
       case "Option": {
         String[] options = {"Uno", "Dos", "Tres", "Cuatro", "Cinco", "seis", "siete", "ocho",
-            "nueve", "dies"};
+          "nueve", "dies"};
         int retvalue = JOptionPane
-            .showOptionDialog(EditorViewImpl.this, "Please choose number", "Options",
-                JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[4]);
+                .showOptionDialog(EditorViewImpl.this,
+                        "Please choose number", "Options",
+                        JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                        null, options, options[4]);
       }
       break;
       default:
@@ -427,30 +437,32 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     }
   }
 
-//  /**
-//   * Loads a new file.
-//   */
-//  public void loadNewFile() {
-//    try {
-//      new AnimationReader();
-//      this.model = AnimationReader
-//          .parseFile(new FileReader(new File(this.projectURL).getAbsolutePath()),
-//              new AnimationImpl.Builder());
-//      this.refresh();
-//    } catch (FileNotFoundException e) {
-//      this.displayError(e.getMessage());
-//    }
-//  }
+  //  /**
+  //   * Loads a new file.
+  //   */
+  //  public void loadNewFile() {
+  //    try {
+  //      new AnimationReader();
+  //      this.model = AnimationReader
+  //          .parseFile(new FileReader(new File(this.projectURL).getAbsolutePath()),
+  //              new AnimationImpl.Builder());
+  //      this.refresh();
+  //    } catch (FileNotFoundException e) {
+  //      this.displayError(e.getMessage());
+  //    }
+  //  }
 
   @Override
   public void valueChanged(ListSelectionEvent e) {
     // We don't know which list called this callback, because we're using it
     // for two lists.  In practice, you should use separate listeners
     JOptionPane.showMessageDialog(EditorViewImpl.this,
-        "The source object is " + e.getSource(), "Source", JOptionPane.PLAIN_MESSAGE);
+            "The source object is " + e.getSource(), "Source",
+            JOptionPane.PLAIN_MESSAGE);
     // Regardless, the event information tells us which index was selected
     JOptionPane.showMessageDialog(EditorViewImpl.this,
-        "The changing index is " + e.getFirstIndex(), "Index", JOptionPane.PLAIN_MESSAGE);
+            "The changing index is " + e.getFirstIndex(), "Index",
+            JOptionPane.PLAIN_MESSAGE);
     // This gets us the string value that's currently selected
   }
 

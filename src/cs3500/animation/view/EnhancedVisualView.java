@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
 
 import cs3500.animation.model.AnimationModel;
 import cs3500.animation.model.IReadOnlyModel;
@@ -50,6 +52,23 @@ public class EnhancedVisualView extends JFrame implements EnhancedIView {
     //sets the menu bar
     menuBar = new MenuPanel(mm.getShapes());
     this.add(menuBar, BorderLayout.WEST);
+
+    vPanel.setSlider(menuBar.getJSlider());
+    this.menuBar.getJSlider().setMinimum(0);
+    this.menuBar.getJSlider().setMaximum(this.vPanel.getMaxTick());
+    menuBar.getJSlider().setValue(0);
+    menuBar.getJSlider().addChangeListener((ChangeEvent e) -> {
+      JSlider source = (JSlider) e.getSource();
+      int fps = (int) source.getValue();
+      if (source.getValueIsAdjusting()) {
+        vPanel.stopTimer();
+        vPanel.setTick(fps);
+        vPanel.repaint();
+      } else {
+        vPanel.startTimer();
+      }
+    });
+
   }
 
   /**

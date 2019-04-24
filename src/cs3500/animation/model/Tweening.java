@@ -13,23 +13,45 @@ public class Tweening implements Function<ArrayList<Transformation>, ArrayList<T
     ArrayList<Transformation> al = new ArrayList<>();
     for (Transformation t : transformations) {
       int between = t.getT2();
-      while (between > t.getT1()) {
-        Transformation temp = new Transformation(t.getName(), between,
-                this.tween(between, t.getT1(), t.getPosition1().getX(),
-                        t.getT2(), t.getPosition2().getX()),
-                this.tween(between, t.getT1(), t.getPosition1().getY(),
-                        t.getT2(), t.getPosition2().getY()),
-                (int) this.tween(between, t.getT1(), t.getDimn1().getWidth(),
-                        t.getT2(), t.getDimn2().getWidth()),
-                (int) this.tween(between, t.getT1(), t.getDimn1().getHeight(),
-                        t.getT2(), t.getDimn2().getHeight()),
-                (int) this.tween(between, t.getT1(), t.getColor1().getRed(),
-                        t.getT2(), t.getColor2().getRed()),
-                (int) this.tween(between, t.getT1(), t.getColor1().getGreen(),
-                        t.getT2(), t.getColor2().getGreen()),
-                (int) this.tween(between, t.getT1(), t.getColor1().getBlue(),
-                        t.getT2(), t.getColor2().getBlue()));
-        al.add(temp);
+      while (between >= t.getT1()) {
+        if(t.getRad1() == -1 && t.getRad2() == -1) {
+          Transformation temp = new Transformation(t.getName(), between,
+                  this.tween(between, t.getT1(), t.getPosition1().getX(),
+                          t.getT2(), t.getPosition2().getX()),
+                  this.tween(between, t.getT1(), t.getPosition1().getY(),
+                          t.getT2(), t.getPosition2().getY()),
+                  (int) this.tween(between, t.getT1(), t.getDimn1().getWidth(),
+                          t.getT2(), t.getDimn2().getWidth()),
+                  (int) this.tween(between, t.getT1(), t.getDimn1().getHeight(),
+                          t.getT2(), t.getDimn2().getHeight()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getRed(),
+                          t.getT2(), t.getColor2().getRed()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getGreen(),
+                          t.getT2(), t.getColor2().getGreen()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getBlue(),
+                          t.getT2(), t.getColor2().getBlue()));
+          al.add(temp);
+        }
+        else {
+          Transformation temp = new Transformation(t.getName(), between,
+                  this.tween(between, t.getT1(), t.getPosition1().getX(),
+                          t.getT2(), t.getPosition2().getX()),
+                  this.tween(between, t.getT1(), t.getPosition1().getY(),
+                          t.getT2(), t.getPosition2().getY()),
+                  (int) this.tween(between, t.getT1(), t.getDimn1().getWidth(),
+                          t.getT2(), t.getDimn2().getWidth()),
+                  (int) this.tween(between, t.getT1(), t.getDimn1().getHeight(),
+                          t.getT2(), t.getDimn2().getHeight()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getRed(),
+                          t.getT2(), t.getColor2().getRed()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getGreen(),
+                          t.getT2(), t.getColor2().getGreen()),
+                  (int) this.tween(between, t.getT1(), t.getColor1().getBlue(),
+                          t.getT2(), t.getColor2().getBlue()),
+                  (int) this.tween(between,t.getT1(),t.getRad1(),t.getT2(),t.getRad2()));
+          al.add(temp);
+        }
+
         between--;
       }
     }

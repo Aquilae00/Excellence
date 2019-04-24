@@ -5,15 +5,9 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.awt.FlowLayout;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.ListSelectionModel;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 
 /**
  * The class designed for menu in User Interface.
@@ -36,6 +30,7 @@ public class MenuPanel extends JPanel {
   private JTextField blue;
   private JButton createTrans;
   private JButton deleteTrans;
+  private JSlider jSlider;
 
   /**
    * Menupanel that is constructed with map of string.
@@ -177,6 +172,13 @@ public class MenuPanel extends JPanel {
     deleteTrans = new JButton("Delete");
     deleteTrans.setActionCommand("delT");
     this.add(deleteTrans);
+
+    jSlider = new JSlider(JSlider.HORIZONTAL);
+    jSlider.setMajorTickSpacing(50);
+    jSlider.setPaintTicks(true);
+    jSlider.setPaintLabels(true);
+
+    this.add(jSlider);
   }
 
   /**
@@ -361,5 +363,9 @@ public class MenuPanel extends JPanel {
     this.red.setText(s);
     this.green.setText(s);
     this.blue.setText(s);
+  }
+
+  public JSlider getJSlider() {
+    return this.jSlider;
   }
 }

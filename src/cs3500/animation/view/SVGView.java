@@ -82,17 +82,16 @@ public class SVGView extends AView {
       if (t1.getName().equals(name) && t1.getT1() == t1.getT2()) {
         initial = t1;
 
-
-        stringBuilder.append("<rect id=\"").append(name).append("\" ").append("x=\"")
-                .append(initial.getPosition1().getX()).append("\" ").append("y=\"")
-                .append(initial.getPosition1().getY()).append("\" ").append("width=\"")
-                .append(initial.getDimn1().getWidth()).append("\" ").append("height=\"")
-                .append(initial.getDimn1().getHeight()).append("\" ").append("fill=\"")
-                .append("rgb(")
-                .append(initial.getColor1().getRed()).append(",")
-                .append(initial.getColor1().getGreen()).append(",")
-                .append(initial.getColor1().getBlue()).append(")\" ")
-                .append("visibility=\"visible\" >\n");
+          stringBuilder.append("<rect id=\"").append(name).append("\" ").append("x=\"")
+                  .append(initial.getPosition1().getX()).append("\" ").append("y=\"")
+                  .append(initial.getPosition1().getY()).append("\" ").append("width=\"")
+                  .append(initial.getDimn1().getWidth()).append("\" ").append("height=\"")
+                  .append(initial.getDimn1().getHeight()).append("\" ").append("fill=\"")
+                  .append("rgb(")
+                  .append(initial.getColor1().getRed()).append(",")
+                  .append(initial.getColor1().getGreen()).append(",")
+                  .append(initial.getColor1().getBlue()).append(")\" ")
+                  .append("visibility=\"visible\" >\n");
 
 
         //For each Transformation, add animate to XML
@@ -146,6 +145,24 @@ public class SVGView extends AView {
                     .append(t2.getColor2().getGreen()).append(",")
                     .append(t2.getColor2().getBlue()).append(")\" ")
                     .append("fill=\"freeze\" />\n");
+            //rotation
+            if (t2.getRad2() != -1 && t2.getRad1() != -1) {
+              stringBuilder.append("<animateTransform ")
+                      .append("attributeName=\"transform\" ")
+                      .append("attributeType=\"XML\" ")
+                      .append("type=\"rotate\" ").append("begin=\"")
+                      .append((t2.getT1() / tickScale) * 100).append("ms\" ")
+                      .append("from=\"").append(t2.getRad1()).append(" ")
+                      .append(t2.getPosition1().getX() + t2.getDimn1().getWidth() / 2)
+                      .append(" ").append(t2.getPosition1().getY() + t2.getDimn1().getHeight() / 2)
+                      .append("\" ")
+                      .append("to=\"").append(t2.getRad2()).append(" ")
+                      .append(t2.getPosition2().getX() + t2.getDimn2().getWidth() / 2)
+                      .append(" ").append(t2.getPosition2().getY() + t2.getDimn2().getHeight() / 2)
+                      .append("\" ")
+                      .append("dur=\"").append(((t2.getT2() - t2.getT1()) / tickScale) * 100).append("ms\" ")
+                      .append("/>");
+            }
           }
         }
       }

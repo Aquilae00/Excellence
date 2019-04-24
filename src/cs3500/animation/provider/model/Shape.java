@@ -1,4 +1,5 @@
 package cs3500.animation.provider.model;
+
 import java.util.List;
 
 import cs3500.animation.provider.model.qualities.color.Texture;

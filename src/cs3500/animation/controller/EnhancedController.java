@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import cs3500.animation.provider.view.EditorView;
 import cs3500.animation.view.EnhancedVisualView;
 
 /**
- * The controller that enables the user to see the interface.
+ * The controller that enables the user to see the interface. Have a field for EnhancedVisualView
+ * and implements EnhancedIController and ActionListener.
  */
 public class EnhancedController implements EnhancedIController, ActionListener {
   private EnhancedVisualView evv;
@@ -156,7 +156,6 @@ public class EnhancedController implements EnhancedIController, ActionListener {
    */
   private void processDeleteTButtonCommand(String command) {
     Scanner s = new Scanner(command);
-//    evv.getModel().deleteTransformation(s.next(), Integer.parseInt(s.next()));
     evv.getVisualPanel().repaint();
     evv.getVisualPanel().revalidate();
     evv.setVisualText("Deleted Key Frame");
